@@ -1,0 +1,7 @@
+{
+  "name": "acsystem2",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

@@ -1,0 +1,17 @@
+.menu{
+    height: 13vh;
+    background: #17417b;
+    color: white;
+    justify-content: flex-end;
+    align-items:center;
+    text-align:left;
+    
+    width: 90rem;
+    font-size: 3rem;
+    color: white;
+}
+
+.containerLogo{
+    display: flex;
+    justify-content: end;
+}
