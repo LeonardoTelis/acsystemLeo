@@ -22,6 +22,7 @@ return (
     </IonHeader>
 
     <IonContent fullscreen>
+      <br/><br/>
     <IonCard >
         <IonHeader>
         <IonRow>
@@ -37,11 +38,10 @@ return (
             </IonCol>
             </IonRow>
         
-
             <IonItem>
-            <IonLabel>Firma</IonLabel>
-          <IonSelect>
-            <IonSelectOption value="brown">3-secrea</IonSelectOption>
+          <IonLabel>Firma</IonLabel>
+          <IonSelect interface="popover" interfaceOptions={options}>
+            <IonSelectOption value="brown">Brown</IonSelectOption>
             <IonSelectOption value="blonde">Blonde</IonSelectOption>
             <IonSelectOption value="black">Black</IonSelectOption>
             <IonSelectOption value="red">Red</IonSelectOption>

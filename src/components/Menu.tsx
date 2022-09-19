@@ -13,10 +13,10 @@ import {
 
 export const Menu = () =>{
     return (
-        <IonMenu side="end" contentId="Menu">
+        <IonMenu side="end" contentId="main">
             <IonHeader>
                 <IonToolbar color="light">
-                    <IonTitle>MENU</IonTitle>
+                    <IonTitle>Menu</IonTitle>
                 </IonToolbar>
             </IonHeader >
             <IonContent>

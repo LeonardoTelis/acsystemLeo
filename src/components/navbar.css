@@ -1,14 +1,17 @@
 .menu{
     height: 13vh;
     background: #17417b;
-    color: white;
-    justify-content: flex-end;
+    justify-content: center;
     align-items:center;
-    text-align:left;
+    text-align:center;
+    margin-right: justify;
+    width: 150 rem;
+    /*  */
+    display:flex;
+  color: white;
+  padding: 10px;
+  border: none;
     
-    width: 90rem;
-    font-size: 3rem;
-    color: white;
 }
 
 .containerLogo{

@@ -7,7 +7,7 @@ const Firmas_unid: React.FC = () => {
 <IonPage>
     <IonHeader>
         <IonToolbar>
-            <IonTitle>Iniciar sesion</IonTitle>
+            <IonTitle>Firmas Unidad</IonTitle>
             <IonButtons slot="end">
             <NavButtons/>
             </IonButtons>
