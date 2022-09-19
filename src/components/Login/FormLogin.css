@@ -23,7 +23,7 @@ body {
   justify-content: center;
 }
 .logo{
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
 }
 .containerForm{
   display: flex;
@@ -33,9 +33,21 @@ body {
 }
 
 .containerInputs{
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .img{
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
+}
+
+.btnEntrar{
+  --background: var(--ion-color-btn);
+}
+
+/* .modalError{
+  display: none;
+} */
+
+.iconError{
+  margin-right: 0.5rem;
 }

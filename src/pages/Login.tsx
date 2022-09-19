@@ -1,16 +1,16 @@
-import {
-  IonContent,
-  IonPage,
-} from "@ionic/react";
+import { IonContent, IonPage } from "@ionic/react";
+import { Redirect } from "react-router";
 
-import FormLogin from "../components/FormLogin";
-import "./Home.css";
+import FormLogin from "../components/Login/FormLogin";
+import ValidarToken from "../components/Login/ValidarToken";
 
 const Login: React.FC = () => {
+  if (ValidarToken()) {
+    return <Redirect to="/acsystem" />;
+  }
   return (
     <IonPage>
       <IonContent fullscreen>
-        {/* <ExploreContainer /> */}
         <FormLogin></FormLogin>
       </IonContent>
     </IonPage>
