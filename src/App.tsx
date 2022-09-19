@@ -22,6 +22,7 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 import Login from './pages/Login';
 import Acsystem from './pages/Acsystem';
+import ReporteProd from './pages/ReporteProd';
 
 setupIonicReact();
 
@@ -37,6 +38,9 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/acsystem">
           <Acsystem></Acsystem>
+        </Route>
+        <Route exact path="/reporteproduct">
+          <ReporteProd></ReporteProd>
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>
