@@ -6,7 +6,7 @@ import ValidarToken from "../components/Login/ValidarToken";
 
 const Login: React.FC = () => {
   if (ValidarToken()) {
-    return <Redirect to="/acsystem" />;
+    return <Redirect to="/reporteproduct" />;
   }
   return (
     <IonPage>

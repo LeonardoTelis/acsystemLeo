@@ -2,6 +2,8 @@ import { IonButton, IonButtons, IonCard, IonCol, IonContent, IonDatetime, IonDat
 import contac_center from "../img/contac_center.jpg";
 import React from "react";
 import { NavButtons } from '../components/NavButtons';
+import ValidarToken from "../components/Login/ValidarToken";
+import { Redirect } from "react-router";
 
 const ReporteProd: React.FC = () => {
 
@@ -10,6 +12,10 @@ const ReporteProd: React.FC = () => {
     
 
       };
+
+      if(!ValidarToken()){
+        return <Redirect to="/Login" />;
+      }
 return (
     <IonPage>
     <IonHeader>

@@ -42,7 +42,7 @@ const FormLogin: React.FC<ContainerProps> = () => {
         <IonItem className="conteiner" lines="none">
           <IonGrid>
             <IonRow>
-              <IonCol className="containerLogo">
+              <IonCol className="containerLogoLogin">
                 <IonImg src={logo} alt="logo" className="logo" />
               </IonCol>
             </IonRow>
