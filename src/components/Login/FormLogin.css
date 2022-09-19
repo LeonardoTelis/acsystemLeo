@@ -1,0 +1,53 @@
+html {
+  /* 1rem = 10px */
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body {
+  font-size: 1.6rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.conteiner{
+  display: flex;
+  height: 100%;
+}
+
+.containerLogoLogin{
+  display: flex;
+  justify-content: center;
+}
+.logo{
+  margin-bottom: 2rem;
+}
+.containerForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.containerInputs{
+  margin-bottom: 1rem;
+}
+
+.img{
+    margin-bottom: 2rem;
+}
+
+.btnEntrar{
+  --background: var(--ion-color-btn);
+}
+
+/* .modalError{
+  display: none;
+} */
+
+.iconError{
+  margin-right: 0.5rem;
+}

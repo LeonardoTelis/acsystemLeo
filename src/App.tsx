@@ -1,7 +1,6 @@
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonRouterOutlet, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import Home from './pages/Home';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -21,18 +20,20 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { Menu }from  './components/Menu';
+import Login from './pages/Login';
+import Acsystem from './pages/Acsystem';
 import ReporteProd from './pages/ReporteProd';
 import Promesas from './pages/Promesas';
-import Pagos from './pages/Pagos'; 
+import Pagos from './pages/Pagos';
 import Importar from './pages/Importar';
 import Exportar from './pages/Exportar';
 import Usuarios from './pages/Usuarios';
 import Asignacion from './pages/Asignacion';
 import Reportes from './pages/Reportes';
 import Graficas from './pages/Graficas';
-import iniciar_sesion from './components/iniciar_sesion'
+import iniciar_sesion from './components/iniciar_sesion';
 import Firmas_unid from './pages/Firmas_unid';
+
 setupIonicReact();
 
 const App: React.FC = () => (
@@ -40,6 +41,15 @@ const App: React.FC = () => (
     <IonReactRouter>
       <Menu/>
       <IonRouterOutlet id='main'>
+      <Route exact path="/login">
+          <Login />
+        </Route>
+        <Route exact path="/">
+          <Redirect to="/login" />
+        </Route>
+        <Route exact path="/reporteproduct">
+          <ReporteProd></ReporteProd>
+          </Route>
       <Route path="/ReporteProd" component={ReporteProd} exact={true}/>
         <Route path="/Promesas" component={Promesas} exact={true}/>
         <Route path="/Pagos" component={Pagos} exact={true}/>
