@@ -30,7 +30,7 @@ const FormLogin: React.FC<ContainerProps> = () => {
   const login = async () => {
     let logueado = loginUser(user);
     if (await logueado) {
-      history.push("/acsystem");
+      history.push("/reporteproduct");
     } else {
       setIsActiveModal(true);
     }

@@ -19,7 +19,7 @@ import "./navbar.css";
             ) : (
                 <>
    
-                <IonButton className="Reporte" routerLink={"/ReporteProd"}>ReporteProd</IonButton>
+                <IonButton className="Reporte" routerLink={"/reporteproduct"}>ReporteProd</IonButton>
                 <IonButton className="promesas"routerLink={"/Promesas"}>Promesas</IonButton>
                 <IonButton routerLink={"/Pagos"}>Pagos</IonButton>
                 <IonButton routerLink={"/Importar"}>Importar</IonButton>
