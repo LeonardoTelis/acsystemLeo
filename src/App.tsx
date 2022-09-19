@@ -19,21 +19,6 @@ import "@ionic/react/css/flex-utils.css";
 import "@ionic/react/css/display.css";
 
 /* Theme variables */
-<<<<<<< HEAD
-import './theme/variables.css';
-import Login from './pages/Login';
-import Acsystem from './pages/Acsystem';
-import ReporteProd from './pages/ReporteProd';
-import Promesas from './pages/Promesas';
-import Pagos from './pages/Pagos';
-import Importar from './pages/Importar';
-import Exportar from './pages/Exportar';
-import Usuarios from './pages/Usuarios';
-import Asignacion from './pages/Asignacion';
-import Reportes from './pages/Reportes';
-import Graficas from './pages/Graficas';
-import Firmas_unid from './pages/Firmas_unid';
-=======
 import "./theme/variables.css";
 import Login from "./pages/Login";
 import ReporteProd from "./pages/ReporteProd";
@@ -45,9 +30,7 @@ import Usuarios from "./pages/Usuarios";
 import Asignacion from "./pages/Asignacion";
 import Reportes from "./pages/Reportes";
 import Graficas from "./pages/Graficas";
-import iniciar_sesion from "./components/iniciar_sesion";
 import Firmas_unid from "./pages/Firmas_unid";
->>>>>>> 0c60798630b2e27fc34659f7109f8736c027ec15
 
 setupIonicReact();
 
@@ -64,21 +47,6 @@ const App: React.FC = () => (
         </Route>
         <Route exact path="/reporteproduct">
           <ReporteProd></ReporteProd>
-<<<<<<< HEAD
-          </Route>
-      <Route path="/ReporteProd" component={ReporteProd} exact={true}/>
-        <Route path="/Promesas" component={Promesas} exact={true}/>
-        <Route path="/Pagos" component={Pagos} exact={true}/>
-        <Route path="/Importar" component={Importar} exact={true}/>
-        <Route path="/Exportar" component={Exportar} exact={true}/>
-        <Route path="/Usuarios" component={Usuarios} exact={true}/>
-        <Route path="/Asignacion" component={Asignacion} exact={true}/>
-        <Route path="/Reportes" component={Reportes} exact={true}/>
-        <Route path="/Graficas" component={Graficas} exact={true}/>
-        <Route path="/Firmas_unid" component={Firmas_unid} exact={true}/>
-        <Route exact path="/" render={() => <Redirect to="/ReporteProd" />} />
-      
-=======
         </Route>
         {/* <Route path="/ReporteProd" component={ReporteProd} exact={true} /> */}
         <Route path="/Promesas" component={Promesas} exact={true} />
@@ -89,10 +57,8 @@ const App: React.FC = () => (
         <Route path="/Asignacion" component={Asignacion} exact={true} />
         <Route path="/Reportes" component={Reportes} exact={true} />
         <Route path="/Graficas" component={Graficas} exact={true} />
-        <Route path="/iniciar_sesion" component={iniciar_sesion} exact={true} />
         <Route path="/Firmas_unid" component={Firmas_unid} exact={true} />
         {/* <Route exact path="/" render={() => <Redirect to="/ReporteProd" />} /> */}
->>>>>>> 0c60798630b2e27fc34659f7109f8736c027ec15
       </IonRouterOutlet>
     </IonReactRouter>
   </IonApp>
