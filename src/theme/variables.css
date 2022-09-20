@@ -237,3 +237,18 @@ http://ionicframework.com/docs/theming/ */
     --ion-card-background: #1e1e1e;
   }
 }
+
+html {
+  /* 1rem = 10px */
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+body {
+  font-size: 1.6rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}

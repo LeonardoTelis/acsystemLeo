@@ -1,22 +1,35 @@
 import {
+  IonButtons,
   IonContent,
+  IonHeader,
   IonPage,
+  IonTitle,
+  IonToolbar,
 } from "@ionic/react";
 import { Redirect } from "react-router";
-import ExploreContainer from "../components/ExploreContainer";
+import MuestraStatus from "../components/CreditoStatus/MuestraStatus";
 import ValidarToken from "../components/Login/ValidarToken";
+import NavButtons from "../components/NavButtons";
 
-const Acsystem: React.FC = () => {
-  if(!ValidarToken()){
+const CreditoStatus: React.FC = () => {
+  if (!ValidarToken()) {
     return <Redirect to="/Login" />;
   }
   return (
     <IonPage>
-      <IonContent fullscreen>
-        <ExploreContainer></ExploreContainer>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Credito<br></br> Status</IonTitle>
+          <IonButtons slot="end">
+            <NavButtons />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <MuestraStatus></MuestraStatus>
       </IonContent>
     </IonPage>
   );
 };
 
-export default Acsystem;
+export default CreditoStatus;
