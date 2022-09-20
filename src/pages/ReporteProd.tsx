@@ -20,7 +20,6 @@ return (
     <IonPage>
     <IonHeader>
         <IonToolbar>
-            <IonTitle>ReporteProd</IonTitle>
             <IonButtons slot="end">
             <NavButtons/>
             </IonButtons>

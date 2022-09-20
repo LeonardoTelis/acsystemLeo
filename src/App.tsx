@@ -30,8 +30,8 @@ import Usuarios from "./pages/Usuarios";
 import Asignacion from "./pages/Asignacion";
 import Reportes from "./pages/Reportes";
 import Graficas from "./pages/Graficas";
-import Firmas from "./pages/Firmas";
-import Unidades_neg from "./pages/Unidades_neg";
+import Firmas_Unidades from "./components/Firmas_Unidades/Firmas_Unidades";
+
 
 setupIonicReact();
 
@@ -49,7 +49,7 @@ const App: React.FC = () => (
         <Route exact path="/reporteproduct">
           <ReporteProd></ReporteProd>
         </Route>
-        {/* <Route path="/ReporteProd" component={ReporteProd} exact={true} /> */}
+        <Route path="/ReporteProd" component={ReporteProd} exact={true} /> 
         <Route path="/Promesas" component={Promesas} exact={true} />
         <Route path="/Pagos" component={Pagos} exact={true} />
         <Route path="/Importar" component={Importar} exact={true} />
@@ -58,8 +58,7 @@ const App: React.FC = () => (
         <Route path="/Asignacion" component={Asignacion} exact={true} />
         <Route path="/Reportes" component={Reportes} exact={true} />
         <Route path="/Graficas" component={Graficas} exact={true} />
-        <Route path="/Firmas" component={Firmas} exact={true} />
-        <Route path="/Unidades_negs" component={Unidades_neg} exact={true} />
+        <Route path="/Firmas_Unidades" component={Firmas_Unidades} exact={true} />
         {/* <Route exact path="/" render={() => <Redirect to="/ReporteProd" />} /> */}
       </IonRouterOutlet>
     </IonReactRouter>

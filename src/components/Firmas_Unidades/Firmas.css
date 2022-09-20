@@ -1,0 +1,15 @@
+
+.table ion-row:nth-child(even) {background: #FFF}
+.table ion-row:nth-child(even) {background: #DDD}
+
+.table ion-row{
+    font-weight: 200;
+    padding: 10px 5px;
+    font-size: 16px;
+}
+
+#headerTable{
+    font-weight: bold;
+    color: black;
+    font-size: 130%;
+}

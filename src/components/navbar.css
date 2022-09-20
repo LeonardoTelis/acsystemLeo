@@ -1,11 +1,11 @@
 .menu{
     height: 13vh;
     background: #17417b;
-    justify-content: center;
+    justify-content:first baseline;
     align-items:center;
     text-align:center;
     margin-right: justify;
-    width: 150 rem;
+    width: 170rem;
     /*  */
     display:flex;
   color: white;
