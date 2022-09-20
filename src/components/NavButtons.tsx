@@ -28,10 +28,15 @@ import "./navbar.css";
                 <IonButton routerLink={"/Asignacion"}>Asignación</IonButton>
                 <IonButton routerLink={"/Reportes"}>Reportes</IonButton>
                 <IonButton routerLink={"/Graficas"}>Graficas</IonButton>
+<<<<<<< HEAD
                 <IonButton routerLink={"/Firmas_Unidades"}>Firmas y Unidades de negocio</IonButton>
              
         
                 
+=======
+                <IonButton routerLink={"/Firmas_unid"}>Firmas <br/> Unidad</IonButton>
+                <IonButton routerLink={"/CreditoStatus"}>Credito Status</IonButton>
+>>>>>>> 9a0e01b65d78e6f6b56f9248f6c1a0dbc363e6eb
                 </>
             )}
         </div>
