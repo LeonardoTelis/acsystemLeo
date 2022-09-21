@@ -38,9 +38,7 @@ return (
             <IonRow/>
         
             <IonRow>
-        <IonCol className="containerLogo">
-            <img src={contac_center}/>
-            </IonCol>
+        <IonCol className="containerLogo"><img src={contac_center}/></IonCol>
             </IonRow>
         
             <IonItem>

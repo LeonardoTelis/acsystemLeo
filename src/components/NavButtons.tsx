@@ -19,6 +19,8 @@ import "./navbar.css";
             ) : (
                 <>
    
+                <IonButton routerLink={"/Firmas_Unidades"}>Firmas Unidad</IonButton>
+                <IonButton routerLink={"/CreditoStatus"}>Credito Status</IonButton>   
                 <IonButton routerLink={"/reporteproduct"}>ReporteProd</IonButton>
                 <IonButton routerLink={"/Promesas"}>Promesas</IonButton>
                 <IonButton routerLink={"/Pagos"}>Pagos</IonButton>
@@ -28,8 +30,7 @@ import "./navbar.css";
                 <IonButton routerLink={"/Asignacion"}>Asignación</IonButton>
                 <IonButton routerLink={"/Reportes"}>Reportes</IonButton>
                 <IonButton routerLink={"/Graficas"}>Graficas</IonButton>
-                <IonButton routerLink={"/Firmas_unid"}>Firmas <br/> Unidad</IonButton>
-                <IonButton routerLink={"/CreditoStatus"}>Credito Status</IonButton>
+                <IonButton routerLink={"/Firmas_UnidadesEdit"}>Firmas Edit</IonButton>
                 </>
             )}
         </div>
