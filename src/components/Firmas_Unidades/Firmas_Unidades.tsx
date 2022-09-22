@@ -22,8 +22,9 @@ import {
 } from "@ionic/react";
 import { checkmark, pencil, trash } from "ionicons/icons";
 import "./Firmas.css";
-import { searchFirma } from "./Firmas_UnidadesApi";
+import { removefirma, searchFirma } from "./Firmas_UnidadesApi";
 import Firmas from "./Firma";
+import Firmas_UnidadesEdit from "./Firmas_UnidadesEdit";
 
 const Firmas_Unidades: React.FC = () => {
   const [firmas, setFirmas] = useState([]);
@@ -33,10 +34,15 @@ const Firmas_Unidades: React.FC = () => {
   }, []);
 
   const searchUnidadesNegocio = async () => {
-    let result = await searchFirma(1);
+    let result = await searchFirma(2);
     result.activo = (result.activo == true) ? "Activo" : "Inactivo";
     setFirmas(result);
   };
+
+  const remove = (id: string) =>{
+    removefirma(id);
+  }
+
 
   return (
     <IonPage>
@@ -109,10 +115,12 @@ const Firmas_Unidades: React.FC = () => {
               );
             })}
             <IonCol>
-                  <IonButton color="primary" fill="clear" shape="round">
+                  <IonButton onClick={Firmas_UnidadesEdit} color="primary" fill="clear" shape="round">
                     <IonIcon icon={pencil} slot="icon-only" />
                   </IonButton>
-                  <IonButton color="danger" fill="clear" shape="round">
+                  <IonButton color="danger" fill="clear" shape="round"
+                  // onClick={() => remove()}
+                  >
                     <IonIcon icon={trash} slot="icon-only" />
                   </IonButton>
                 </IonCol>
