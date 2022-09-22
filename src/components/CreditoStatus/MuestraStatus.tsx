@@ -5,20 +5,26 @@ import {
   IonContent,
   IonGrid,
   IonIcon,
+  IonInput,
+  IonItem,
+  IonLabel,
   IonPage,
   IonRow,
   IonTitle,
 } from "@ionic/react";
-import { pencil, trash } from "ionicons/icons";
+import { pencil, searchOutline, trash } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import "./MuestraStatus.css";
-import { searchStatus } from "./MuestraStatusApi";
+import { useHistory } from "react-router";
+import { removeCredito, searchStatus } from "./MuestraStatusApi";
 import Status from "./Status";
 
 interface ContainerProps {}
 
 const MuestraStatus: React.FC<ContainerProps> = () => {
+  const history = useHistory();
   const [creditos, setCreditos] = useState([]);
+  let [statusID, setStatusID] = useState<any>();
 
   useEffect(() => {
     searchCreditos();
@@ -28,37 +34,50 @@ const MuestraStatus: React.FC<ContainerProps> = () => {
     let result = await searchStatus();
     setCreditos(result);
   };
+
+  const remove = async (id: Number) => {
+    await removeCredito(id);
+    searchCreditos();
+  };
+
+  const edit = (id: String) => {
+    history.push("/CreditoStatus/edit/" + id);
+  };
+
   return (
-    <IonPage>
-      <IonContent>
-        <IonCard className="containerTable">
-          <IonTitle>Gestion de los status</IonTitle>
-          <IonGrid className="table">
-            <IonRow id="headerTable">
-              <IonCol>ID</IonCol>
-              <IonCol>Status</IonCol>
-              <IonCol>Nombre</IonCol>
-              <IonCol>Acciones</IonCol>
+    <IonContent>
+      <IonCard className="containerTable">
+        <IonTitle>Gestion de los status</IonTitle>
+        <IonGrid className="table">
+          <IonRow id="headerTable">
+            <IonCol>ID</IonCol>
+            <IonCol>Status</IonCol>
+            <IonCol>Nombre</IonCol>
+            <IonCol>Acciones</IonCol>
+          </IonRow>
+          {creditos.map((credito: Status) => (
+            <IonRow>
+              <IonCol>{credito.id}</IonCol>
+              <IonCol>{credito.status == true ? "Activo" : "Inactivo"}</IonCol>
+              <IonCol>{credito.nombre}</IonCol>
+              <IonCol>
+                <IonButton color="primary" fill="clear" shape="round" onClick={() => edit(String(credito.id))}>
+                  <IonIcon icon={pencil} slot="icon-only" />
+                </IonButton>
+                <IonButton
+                  color="danger"
+                  fill="clear"
+                  shape="round"
+                  onClick={() => remove(Number(credito.id))}
+                >
+                  <IonIcon icon={trash} slot="icon-only" />
+                </IonButton>
+              </IonCol>
             </IonRow>
-            {creditos.map((credito: Status) => (
-              <IonRow>
-                <IonCol>{credito.id}</IonCol>
-                <IonCol>{(credito.status == true) ? "Activo" : "Inactivo"}</IonCol>
-                <IonCol>{credito.nombre}</IonCol>
-                <IonCol>
-                  <IonButton color="primary" fill="clear" shape="round">
-                    <IonIcon icon={pencil} slot="icon-only" />
-                  </IonButton>
-                  <IonButton color="danger" fill="clear" shape="round">
-                    <IonIcon icon={trash} slot="icon-only" />
-                  </IonButton>
-                </IonCol>
-              </IonRow>
-            ))}
-          </IonGrid>
-        </IonCard>
-      </IonContent>
-    </IonPage>
+          ))}
+        </IonGrid>
+      </IonCard>
+    </IonContent>
   );
 };
 
