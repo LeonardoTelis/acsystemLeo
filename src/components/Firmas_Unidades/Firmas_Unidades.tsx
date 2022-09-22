@@ -25,10 +25,11 @@ import "./Firmas.css";
 import { removefirma, searchFirma } from "./Firmas_UnidadesApi";
 import Firmas from "./Firma";
 import Firmas_UnidadesEdit from "./Firmas_UnidadesEdit";
+import { useHistory } from "react-router";
 
 const Firmas_Unidades: React.FC = () => {
   const [firmas, setFirmas] = useState([]);
-
+  const history = useHistory();
   useEffect(() => {
     searchUnidadesNegocio();
   }, []);
@@ -39,8 +40,8 @@ const Firmas_Unidades: React.FC = () => {
     setFirmas(result);
   };
 
-  const remove = (id: string) =>{
-    removefirma(id);
+  const firma = (id: string) =>{
+    history.push('../Firmas_Unidades/Firmas_UnidadesEdit.tsx' +id);
   }
 
 
@@ -115,12 +116,11 @@ const Firmas_Unidades: React.FC = () => {
               );
             })}
             <IonCol>
-                  <IonButton onClick={Firmas_UnidadesEdit} color="primary" fill="clear" shape="round">
+                  <IonButton onClick={() => removefirma('')} color="primary" fill="clear" shape="round">
                     <IonIcon icon={pencil} slot="icon-only" />
                   </IonButton>
-                  <IonButton color="danger" fill="clear" shape="round"
-                  // onClick={() => remove()}
-                  >
+
+                  <IonButton color="danger" fill="clear" shape="round">
                     <IonIcon icon={trash} slot="icon-only" />
                   </IonButton>
                 </IonCol>
@@ -133,3 +133,4 @@ const Firmas_Unidades: React.FC = () => {
 };
 
 export default Firmas_Unidades;
+

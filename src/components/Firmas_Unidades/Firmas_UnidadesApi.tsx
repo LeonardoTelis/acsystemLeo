@@ -13,7 +13,7 @@ export async function searchFirma(id:Number) {
 
 export async function removefirma(id:any) {
   let response = await fetch(`http://localhost:8080/acsystem/creditos/status/${id}`, {
-    method: "DELETE",
+    method: "REMOVE",
     headers: {
         // 'Accept': 'application/json',
         'Content-Type': 'application/json',
