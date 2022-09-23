@@ -1,6 +1,10 @@
 import axios, { Axios } from "axios";
 import Status from "./Status";
 
+let token = localStorage.getItem("token");
+let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+let authorization = `Bearer ${tokenDeAcceso}`;
+
 export async function searchStatus() {
   let response = await fetch("http://localhost:8080/acsystem/creditos/status", {
     method: "GET",
@@ -13,14 +17,10 @@ export async function searchStatus() {
 }
 
 export async function removeCredito(id: Number) {
-  let token = localStorage.getItem("token");
-  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
   let URL = `http://localhost:8080/acsystem/creditos/status/${id}`;
-  let authorization = `Bearer ${tokenDeAcceso}`;
-
   await axios.delete(URL, {
     headers: {
-      Authorization: authorization,
+      "Authorization": authorization,
     },
   });
 }
@@ -33,6 +33,7 @@ export const searchCreditoById = async (id: String) => {
       timeout: 8000,
       headers: {
         "Content-Type": "application/json",
+        "Authorization": authorization,
       },
     });
     if (res.status == 200) {
@@ -46,15 +47,18 @@ export const searchCreditoById = async (id: String) => {
   }
 };
 
-export const editCredito = async (credito : Status) => {
+export const editCredito = async (credito: Status) => {
   try {
     await axios({
       method: "put",
       url: `http://localhost:8080/acsystem/creditos/status/${credito.id}`,
       data: {
-        nombre:credito.nombre,
-        activo:credito.activo
+        nombre: credito.nombre,
+        activo: credito.activo,
       },
+      headers:{
+        "Authorization": authorization,
+      }
     });
   } catch (err) {
     if (err.response.status === 404) {

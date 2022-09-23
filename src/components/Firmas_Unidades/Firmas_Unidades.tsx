@@ -48,7 +48,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
 
   const remove = async (id: Number) => {
     await removeFirma(id);
-    searchFirma();
+    searchUnidadesNegocio();
   };
 
   const edit = (id: String) => {
