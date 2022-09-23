@@ -28,7 +28,7 @@ const MuestraStatus: React.FC<ContainerProps> = () => {
 
   useEffect(() => {
     searchCreditos();
-  }, []);
+  }, [history.location.pathname]);
 
   const searchCreditos = async () => {
     let result = await searchStatus();
@@ -58,7 +58,7 @@ const MuestraStatus: React.FC<ContainerProps> = () => {
           {creditos.map((credito: Status) => (
             <IonRow>
               <IonCol>{credito.id}</IonCol>
-              <IonCol>{credito.status == true ? "Activo" : "Inactivo"}</IonCol>
+              <IonCol>{credito.activo == true ? "Activo" : "Inactivo"}</IonCol>
               <IonCol>{credito.nombre}</IonCol>
               <IonCol>
                 <IonButton color="primary" fill="clear" shape="round" onClick={() => edit(String(credito.id))}>
