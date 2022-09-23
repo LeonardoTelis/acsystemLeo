@@ -22,31 +22,39 @@ import {
 } from "@ionic/react";
 import { checkmark, pencil, trash } from "ionicons/icons";
 import "./Firmas.css";
-import { removefirma, searchFirma } from "./Firmas_UnidadesApi";
-import Firmas from "./Firma";
+import { removeFirma,  searchFirma } from "./Firmas_UnidadesApi";
+import Firma from "./Firma";
 import Firmas_UnidadesEdit from "./Firmas_UnidadesEdit";
 import { useHistory } from "react-router";
+import { Container } from "react-dom";
 
-const Firmas_Unidades: React.FC = () => {
-  const [firmas, setFirmas] = useState([]);
+interface ContainerProps{}
+
+const Firmas_Unidades: React.FC<ContainerProps> = () => {
   const history = useHistory();
+  const [firmas, setFirmas] = useState([]);
+  let [firmaID, setFirmaID] = useState<any>();
+
   useEffect(() => {
     searchUnidadesNegocio();
   }, []);
 
   const searchUnidadesNegocio = async () => {
-    let result = await searchFirma(2);
-    result.activo = (result.activo == true) ? "Activo" : "Inactivo";
+    let result = await searchFirma();
     setFirmas(result);
   };
 
-  const firma = (id: string) =>{
-    history.push('../Firmas_Unidades/Firmas_UnidadesEdit.tsx' +id);
-  }
+  const remove = async (id: Number) => {
+    await removeFirma(id);
+    searchFirma();
+  };
 
+  const edit = (id: String) => {
+    history.push("Firmas_UnidadesEdit/" + id);
+  };
 
   return (
-    <IonPage>
+    <IonContent>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Firmas y Unidades de negocio</IonTitle>
@@ -55,80 +63,49 @@ const Firmas_Unidades: React.FC = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      
         <br></br>
-        <IonCard>
+        <IonCard className="containerTable">
           <br></br>
-          <IonTitle>Firmas</IonTitle>
-          <IonItem>
-            <IonLabel position="floating">ID</IonLabel>
-            <IonInput value={""}></IonInput>
-          </IonItem>
-
-          <IonItem>
-            <IonButton color="primary" fill="solid" slot="end" size="default">
-              <IonIcon icon={checkmark} />
-              Consultar
-            </IonButton>
-          </IonItem>
-        </IonCard>
-
-        <br />
-        <br />
-        <IonCard>
-          <br></br>
-          <IonItem>
-            <IonTitle>Unidades de negocio</IonTitle>
-            <br></br>
-          </IonItem>
-          <br></br>
-          <IonRow id="headerTable">
-            <IonCol>Nombre</IonCol>
-            <IonCol>Activo</IonCol>
-            <IonCol>Dias Promesa</IonCol>
-            <IonCol>Acciones</IonCol>
-          </IonRow>
+          <IonTitle >Firmas</IonTitle>
+          <IonItem className="containerInputs containerInputPassword">
+                  <IonLabel position="fixed">Id</IonLabel>
+                  <IonInput type="text" name="nombre" id="nombre" />
+                </IonItem>
 
           <IonGrid className="table">
-          {/* {firmas.map((firma: Firmas) => (
+          <IonRow id="headerTable">
+            <IonCol>ID</IonCol>
+            <IonCol>Status</IonCol>
+            <IonCol>Dias promesa</IonCol>
+            <IonCol>Nombre</IonCol>
+            <IonCol>Acciones</IonCol>
+          </IonRow>
+        {firmas.map((firmas: Firma) => (
           <IonRow>
-                <IonCol>{firma.id}</IonCol>
-                <IonCol>{(firma.activo == true) ? "Activo" : "Inactivo"}</IonCol>
-                <IonCol>{String(firma.dias_promesa)}</IonCol>
-                <IonCol>{firma.nombre}</IonCol>
-                <IonCol>
-                  <IonButton color="primary" fill="clear" shape="round">
-                    <IonIcon icon={pencil} slot="icon-only" />
-                  </IonButton>
-                  <IonButton color="danger" fill="clear" shape="round">
-                    <IonIcon icon={trash} slot="icon-only" />
-                  </IonButton>
-                </IonCol>
-              </IonRow>
-            ))} */}
-              {/* // <div key={index}>
-              //   <p> {key}: {firmas[key]}</p>
-              // </div> */}
-              <IonRow>
-              {Object.keys(firmas).map((key : any, index) => {
-               return(
-                <IonCol key={index}>{firmas[key]}</IonCol>
-              );
-            })}
-            <IonCol>
-                  <IonButton onClick={() => removefirma('')} color="primary" fill="clear" shape="round">
-                    <IonIcon icon={pencil} slot="icon-only" />
-                  </IonButton>
+            <IonCol>{firmas.id}</IonCol>
+            <IonCol>{firmas.activo == true ? "Activo" : "Inactivo"}</IonCol>
+            <IonCol>{firmas.diasPromesa}</IonCol>
+            <IonCol>{firmas.nombre}</IonCol>
 
-                  <IonButton color="danger" fill="clear" shape="round">
-                    <IonIcon icon={trash} slot="icon-only" />
-                  </IonButton>
-                </IonCol>
-              </IonRow>
+            <IonCol>
+                <IonButton color="primary" fill="clear" shape="round" onClick={() => edit(String(firmas.id))}>
+                  <IonIcon icon={pencil} slot="icon-only" />
+                </IonButton>
+                <IonButton
+                  color="danger"
+                  fill="clear"
+                  shape="round"
+                  onClick={() => remove(Number(firmas.id))}
+                >
+                  <IonIcon icon={trash} slot="icon-only" />
+                </IonButton>
+              </IonCol>
+          </IonRow>
+        ))}
           </IonGrid>
         </IonCard>
-      </IonContent>
-    </IonPage>
+    </IonContent>
   );
 };
 

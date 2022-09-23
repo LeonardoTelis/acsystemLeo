@@ -1,6 +1,6 @@
-export default interface Firmas {
+export default interface Firma {
     id?: string,
     activo?:boolean,
-    dias_promesa?:Number,
+    diasPromesa?:number,
     nombre?:string
 }

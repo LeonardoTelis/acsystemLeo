@@ -1,15 +1,27 @@
 
-.table ion-row:nth-child(even) {background: #FFF}
-.table ion-row:nth-child(even) {background: #DDD}
-
-.table ion-row{
-    font-weight: 200;
-    padding: 10px 5px;
-    font-size: 16px;
-}
-
-#headerTable{
+.containerTable{
+    width: 80%;
+    margin: 3rem auto;
+  }
+  
+  ion-title{
+    padding: 2rem;
+  }
+  
+  .table ion-row{
+    padding: 3rem;
+    font-size: 1.6rem;
+  }
+  
+  .table ion-row:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  .table ion-row:nth-child(even) {
+    background-color: #fff;
+  }
+  
+  .table #headerTable{
     font-weight: bold;
     color: black;
-    font-size: 130%;
-}
+  }
+  
