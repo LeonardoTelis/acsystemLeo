@@ -60,7 +60,7 @@ const App: React.FC = () => (
         <Route path="/Asignacion" component={Asignacion} exact={true} />
         <Route path="/Reportes" component={Reportes} exact={true} />
         <Route path="/Graficas" component={Graficas} exact={true} />
-        <Route path="/Unidades_Negocio" component={Unidades_Negocio} exact={true} />
+        <Route path="/Unidades_Negocio/:id" component={Unidades_Negocio} exact={true} />
         <Route
           path="/Firmas_Unidades"
           component={Firmas_Unidades}

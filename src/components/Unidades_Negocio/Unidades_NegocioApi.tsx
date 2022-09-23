@@ -9,7 +9,7 @@ let authorization = `Bearer ${tokenDeAcceso}`;
 export const searchUnidadById = async (id: String) => {
   try {
     let res = await axios({
-      url: `http://localhost:8080/firmas/${id}/unidadesNegocio`,
+      url: `http://localhost:8080/acsystem/firmas/${id}/unidadesNegocio`,
       method: "get",
       timeout: 8000,
       headers: {
