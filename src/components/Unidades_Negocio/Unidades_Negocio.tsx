@@ -11,7 +11,11 @@ import {
   IonItem,
   IonLabel,
   IonInput,
+  IonGrid,
+  IonRow,
+  IonCol,
 } from '@ionic/react';
+import "./Unidades.css";
 import { OverlayEventDetail } from '@ionic/core/components';
 
 function Unidades_Negocio() {
@@ -22,6 +26,7 @@ function Unidades_Negocio() {
     'Levi te amo'
   );
 
+ 
   function confirm() {
     modal.current?.dismiss(input.current?.value, 'confirm');
   }
@@ -39,26 +44,31 @@ function Unidades_Negocio() {
           Unidades de negocio
         </IonButton>
         <p>{message}</p>
-        <IonModal ref={modal} trigger="open-modal" onWillDismiss={(ev) => onWillDismiss(ev)}>
+        <IonModal  ref={modal} trigger="open-modal" onWillDismiss={(ev) => onWillDismiss(ev)}>
           <IonHeader>
             <IonToolbar>
               <IonButtons slot="start">
-                <IonButton onClick={() => modal.current?.dismiss()}>Cancel</IonButton>
+                <IonButton onClick={() => modal.current?.dismiss()}>Cancelar</IonButton>
               </IonButtons>
-              <IonTitle>Welcome</IonTitle>
+              <IonTitle>Editar Unidades de negocio</IonTitle>
               <IonButtons slot="end">
                 <IonButton strong={true} onClick={() => confirm()}>
-                  Confirm
+                  Guardar
                 </IonButton>
               </IonButtons>
             </IonToolbar>
           </IonHeader>
-          <IonContent className="ion-padding">
-            <IonItem>
-              <IonLabel position="stacked">Enter your name</IonLabel>
-              <IonInput ref={input} type="text" placeholder="Your name" />
-            </IonItem>
-          </IonContent>
+
+          <IonGrid className='table'>
+            <IonRow id="headerTable">
+                <IonCol>Id</IonCol>
+                <IonCol>Status</IonCol>
+                <IonCol>Nombre</IonCol>
+                <IonCol>Script</IonCol>
+                <IonCol>Firma Id</IonCol>
+            </IonRow>
+          </IonGrid>
+         
         </IonModal>
       </IonContent>
     </IonPage>
