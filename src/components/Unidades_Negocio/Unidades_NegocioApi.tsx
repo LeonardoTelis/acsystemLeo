@@ -1,4 +1,5 @@
 import axios, { Axios } from "axios";
+import Unidades from "./Unidades";
 // import Firma from "./Firma";
 
 let token = localStorage.getItem("token");
@@ -27,37 +28,37 @@ export const searchUnidadById = async (id: String) => {
   }
 };
 
-// export async function removeFirma(id: Number) {
-//   let URL = `http://localhost:8080/acsystem/firmas/${id}`;
-//   let authorization = `Bearer ${tokenDeAcceso}`;
+export async function removeUnidadNegocio(idFirma: Number,idUnidadNegocio:Number) {
+  let URL = `http://localhost:8080/acsystem/firmas/${idFirma}/unidadesNegocio/${idUnidadNegocio}`;
+  let authorization = `Bearer ${tokenDeAcceso}`;
 
-//   await axios.delete(URL, {
-//     headers: {
-//       "Authorization": authorization,
-//     },
-//   });
-// }
+  await axios.delete(URL, {
+    headers: {
+      "Authorization": authorization,
+    },
+  });
+}
 
-// export const editFirma = async (firma: Firma) => {
-//   try {
-//     await axios({
-//       method: "put",
-//       url: `http://localhost:8080/acsystem/firmas/${firma.id}`,
-//       data: {
-//         nombre: firma.nombre,
-//         activo: firma.activo,
-//         diasPromesa: firma.diasPromesa,
-//       },
-//       headers:{
-//         "Authorization": authorization,
-//       }
-//     });
-//   } catch (err) {
-//     if (err.response.status === 404) {
-//       console.log("Resource could not be found!");
-//     } else {
-//       console.log(err.message);
-//     }
-//   }
-// };
+export const editUnidadNegocio = async (idFirma: Number,unidadNegocio: Unidades) => {
+  try {
+    await axios({
+      method: "put",
+      url: `http://localhost:8080/firmas/${idFirma}/unidadesNegocio/${unidadNegocio.id}`,
+      data: {
+        activo: unidadNegocio.activo,
+        nombre: unidadNegocio.nombre,
+        script: unidadNegocio.script,
+      },
+      headers:{
+        "Authorization": authorization,
+      }
+    });
+  } catch (err) {
+    if (err.response.status === 404) {
+      console.log("Resource could not be found!");
+    } else {
+      console.log(err.message);
+    }
+  }
+};
 
