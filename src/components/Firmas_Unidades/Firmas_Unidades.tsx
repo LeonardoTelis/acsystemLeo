@@ -26,7 +26,9 @@ import { removeFirma,  searchFirma } from "./Firmas_UnidadesApi";
 import Firma from "./Firma";
 import Firmas_UnidadesEdit from "./Firmas_UnidadesEdit";
 import { useHistory } from "react-router";
-import { Container } from "react-dom";
+// import { Container } from "react-dom";
+import Unidades_Negocio from "../Unidades_Negocio/Unidades_Negocio";
+
 
 interface ContainerProps{}
 
@@ -51,6 +53,10 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
 
   const edit = (id: String) => {
     history.push("Firmas_UnidadesEdit/" + id);
+  };
+
+  const Unidades = (id: String) => {
+    history.push("Unidades_Negocio/" + id);
   };
 
   return (
@@ -100,6 +106,11 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
                 >
                   <IonIcon icon={trash} slot="icon-only" />
                 </IonButton>
+
+                <IonButton id="open-modal" expand="block"
+                onClick={() => Unidades(String(Unidades))}>
+                  Unidades de negocio
+              </IonButton>
               </IonCol>
           </IonRow>
         ))}

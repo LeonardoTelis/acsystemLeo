@@ -31,7 +31,8 @@ import Asignacion from "./pages/Asignacion";
 import Reportes from "./pages/Reportes";
 import Graficas from "./pages/Graficas";
 import Firmas_Unidades from "./components/Firmas_Unidades/Firmas_Unidades";
-import Firmas_UnidadesEdit from "./components/Firmas_Unidades/Firmas_UnidadesEdit"
+import Firmas_UnidadesEdit from "./components/Firmas_Unidades/Firmas_UnidadesEdit";
+import Unidades_Negocio from "./components/Unidades_Negocio/Unidades_Negocio";
 import CreditoStatus from "./pages/CreditoStatus";
 import CreditoStatusEdit from "./pages/CreditoStatusEdit";
 
@@ -61,6 +62,7 @@ const App: React.FC = () => (
         <Route path="/Graficas" component={Graficas} exact={true} />
         <Route path="/Firmas_Unidades" component={Firmas_Unidades} exact={true} />
         <Route path="/Firmas_UnidadesEdit/:id" component={Firmas_UnidadesEdit} exact={true} />
+        <Route path="/Unidades_Negocio" component={Unidades_Negocio} exact={true} />
         <Route
           path="/CreditoStatus"
           render={() => <CreditoStatus />}
