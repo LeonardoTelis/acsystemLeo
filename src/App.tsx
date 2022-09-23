@@ -65,7 +65,7 @@ const App: React.FC = () => (
           exact={true}
         />
         <Route
-          path="/Firmas_UnidadesEdit"
+          path="/Firmas_UnidadesEdit/:id"
           component={Firmas_UnidadesEdit}
           exact={true}
         />
