@@ -108,7 +108,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
                 </IonButton>
 
                 <IonButton id="open-modal" expand="block"
-                onClick={() => Unidades(String(Unidades))}>
+                onClick={() => Unidades(String(firmas.id))}>
                   Unidades de negocio
               </IonButton>
               </IonCol>
