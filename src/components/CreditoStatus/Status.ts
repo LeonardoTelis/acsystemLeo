@@ -1,5 +1,5 @@
 export default interface MuestraStatus {
     id?: string,
-    status?:boolean,
+    activo?:boolean,
     nombre?:string
 }
