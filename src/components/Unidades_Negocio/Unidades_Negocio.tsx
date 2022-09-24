@@ -18,12 +18,14 @@ import {
 } from "@ionic/react";
 import "./Unidades.css";
 import { OverlayEventDetail } from "@ionic/core/components";
-import { searchUnidadById } from "./Unidades_NegocioApi";
+import { removeUnidadNegocio, searchUnidadById } from "./Unidades_NegocioApi";
 import { useParams } from "react-router";
 import UnidadesNegocio from "./Unidades";
 import { pencil, search, trash } from "ionicons/icons";
+import { useHistory } from "react-router";
 
 function Unidades_Negocio() {
+  const history = useHistory();
   const modal = useRef<HTMLIonModalElement>(null);
   const input = useRef<HTMLIonInputElement>(null);
 
@@ -49,6 +51,15 @@ function Unidades_Negocio() {
   const search = async () => {
     let result = await searchUnidadById(String(idFirma.id));
     setUnidadesNegocio(result);
+  };
+
+  const remove = async (id: Number) => {
+    await removeUnidadNegocio(id, Number(idFirma.id));
+    search();
+  };
+
+  const edit = (id: String) => {
+    history.push("Unidades_Negocio_Edit/" + id);
   };
 
   return (
@@ -81,11 +92,12 @@ function Unidades_Negocio() {
 
           <IonGrid className="table">
             <IonRow id="headerTable">
-                <IonCol>Id</IonCol>
-                <IonCol>Status</IonCol>
-                <IonCol>Nombre</IonCol>
-                <IonCol>Script</IonCol>
-                <IonCol>Firma Id</IonCol>
+              <IonCol>Id</IonCol>
+              <IonCol>Status</IonCol>
+              <IonCol>Nombre</IonCol>
+              <IonCol>Script</IonCol>
+              <IonCol>Firma Id</IonCol>
+              <IonCol>Acciones</IonCol>
             </IonRow>
             {unidadesNegocio.map((unidadNegocio: UnidadesNegocio) => (
               <IonRow>
@@ -95,13 +107,13 @@ function Unidades_Negocio() {
                 </IonCol>
                 <IonCol>{unidadNegocio.nombre}</IonCol>
                 <IonCol>{unidadNegocio.script}</IonCol>
-                <IonCol>{unidadNegocio.firma_id}</IonCol>
+                <IonCol>{idFirma.id}</IonCol>
                 <IonCol>
                   <IonButton
                     color="primary"
                     fill="clear"
                     shape="round"
-                    // onClick={() => edit(String(unidadNegocio.id))}
+                    onClick={() => edit(String(unidadNegocio.id))}
                   >
                     <IonIcon icon={pencil} slot="icon-only" />
                   </IonButton>
@@ -109,7 +121,7 @@ function Unidades_Negocio() {
                     color="danger"
                     fill="clear"
                     shape="round"
-                    // onClick={() => remove(Number(unidadNegocio.id))}
+                    onClick={() => remove(Number(unidadNegocio.id))}
                   >
                     <IonIcon icon={trash} slot="icon-only" />
                   </IonButton>

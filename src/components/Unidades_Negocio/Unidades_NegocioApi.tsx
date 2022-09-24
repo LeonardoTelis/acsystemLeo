@@ -2,11 +2,10 @@ import axios, { Axios } from "axios";
 import Unidades from "./Unidades";
 // import Firma from "./Firma";
 
-let token = localStorage.getItem("token");
-let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
-let authorization = `Bearer ${tokenDeAcceso}`;
-
 export const searchUnidadById = async (id: String) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
   try {
     let res = await axios({
       url: `http://localhost:8080/acsystem/firmas/${id}/unidadesNegocio`,
@@ -14,7 +13,7 @@ export const searchUnidadById = async (id: String) => {
       timeout: 8000,
       headers: {
         "Content-Type": "application/json",
-        "Authorization": authorization,
+        Authorization: authorization,
       },
     });
     if (res.status == 200) {
@@ -28,18 +27,34 @@ export const searchUnidadById = async (id: String) => {
   }
 };
 
-export async function removeUnidadNegocio(idFirma: Number,idUnidadNegocio:Number) {
-  let URL = `http://localhost:8080/acsystem/firmas/${idFirma}/unidadesNegocio/${idUnidadNegocio}`;
+export async function removeUnidadNegocio(
+  idFirma: Number,
+  idUnidadNegocio: Number
+) {
+  let URL = `http://localhost:8080/acsystem/firmas/${idUnidadNegocio}/unidadesNegocio/${idFirma}`;
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
   let authorization = `Bearer ${tokenDeAcceso}`;
 
   await axios.delete(URL, {
     headers: {
+      "Accept": "application/json",
+      "Content-Type": "application/json",
       "Authorization": authorization,
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Credentials": true,
+      "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
     },
   });
 }
 
-export const editUnidadNegocio = async (idFirma: Number,unidadNegocio: Unidades) => {
+export const editUnidadNegocio = async (
+  idFirma: Number,
+  unidadNegocio: Unidades
+) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
   try {
     await axios({
       method: "put",
@@ -49,9 +64,9 @@ export const editUnidadNegocio = async (idFirma: Number,unidadNegocio: Unidades)
         nombre: unidadNegocio.nombre,
         script: unidadNegocio.script,
       },
-      headers:{
-        "Authorization": authorization,
-      }
+      headers: {
+        Authorization: authorization,
+      },
     });
   } catch (err) {
     if (err.response.status === 404) {
@@ -61,4 +76,3 @@ export const editUnidadNegocio = async (idFirma: Number,unidadNegocio: Unidades)
     }
   }
 };
-

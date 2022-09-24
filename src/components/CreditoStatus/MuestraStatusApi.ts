@@ -1,9 +1,6 @@
 import axios, { Axios } from "axios";
 import Status from "./Status";
 
-let token = localStorage.getItem("token");
-let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
-let authorization = `Bearer ${tokenDeAcceso}`;
 
 export async function searchStatus() {
   let response = await fetch("http://localhost:8080/acsystem/creditos/status", {
@@ -17,6 +14,9 @@ export async function searchStatus() {
 }
 
 export async function removeCredito(id: Number) {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
   let URL = `http://localhost:8080/acsystem/creditos/status/${id}`;
   await axios.delete(URL, {
     headers: {
@@ -26,6 +26,9 @@ export async function removeCredito(id: Number) {
 }
 
 export const searchCreditoById = async (id: String) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
   try {
     let res = await axios({
       url: `http://localhost:8080/acsystem/creditos/status/${id}`,
@@ -48,6 +51,9 @@ export const searchCreditoById = async (id: String) => {
 };
 
 export const editCredito = async (credito: Status) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
   try {
     await axios({
       method: "put",
