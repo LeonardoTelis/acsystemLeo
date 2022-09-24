@@ -35,6 +35,7 @@ import CreditoStatusEdit from "./pages/CreditoStatusEdit";
 import Firmas_Unidades from "../src/components/Firmas_Unidades/Firmas_Unidades";
 import Firmas_UnidadesEdit from "../src/components/Firmas_Unidades/Firmas_UnidadesEdit";
 import Unidades_Negocio from "./components/Unidades_Negocio/Unidades_Negocio";
+import UnidadesNegocioEdit from "./pages/UnidadesNegocioEdit";
 
 setupIonicReact();
 
@@ -76,6 +77,9 @@ const App: React.FC = () => (
         </Route>
         <Route path="/CreditoStatus/edit/:id" exact={true}>
           <CreditoStatusEdit></CreditoStatusEdit>
+        </Route>
+        <Route path="/Unidades_Negocio/:idFirma/Unidades_Negocio_Edit/:idUnidadNegocio" exact={true}>
+          <UnidadesNegocioEdit></UnidadesNegocioEdit>
         </Route>
       </IonRouterOutlet>
     </IonReactRouter>

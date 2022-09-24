@@ -48,21 +48,42 @@ export async function removeUnidadNegocio(
   });
 }
 
-export const editUnidadNegocio = async (
-  idFirma: Number,
-  unidadNegocio: Unidades
-) => {
+export const searchUnidadNegocioById = async (idFirma:String,idUnidadNegocio:String) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
+  try {
+    let res = await axios({
+      url: `http://localhost:8080/acsystem/firmas/${idFirma}/unidadesNegocio/${idUnidadNegocio}`,
+      method: "get",
+      timeout: 8000,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: authorization,
+      },
+    });
+    if (res.status == 200) {
+      // test for status you want, etc
+      console.log(res.status);
+    }
+    // Don't forget to return something
+    return res.data;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const editUnidadNegocio = async (unidadNegocio:any,idFirma:String,idUnidadNegocio:String) => {
   let token = localStorage.getItem("token");
   let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
   let authorization = `Bearer ${tokenDeAcceso}`;
   try {
     await axios({
       method: "put",
-      url: `http://localhost:8080/firmas/${idFirma}/unidadesNegocio/${unidadNegocio.id}`,
+      url: `http://localhost:8080/acsystem/firmas/${idFirma}/unidadesNegocio/${idUnidadNegocio}`,
       data: {
-        activo: unidadNegocio.activo,
         nombre: unidadNegocio.nombre,
-        script: unidadNegocio.script,
+        activo: unidadNegocio.activo,
       },
       headers: {
         Authorization: authorization,

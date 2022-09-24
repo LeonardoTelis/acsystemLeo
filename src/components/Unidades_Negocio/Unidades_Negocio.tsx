@@ -59,7 +59,7 @@ function Unidades_Negocio() {
   };
 
   const edit = (id: String) => {
-    history.push("Unidades_Negocio_Edit/" + id);
+    history.push(`/Unidades_Negocio/${idFirma.id}/Unidades_Negocio_Edit/${id}`);
   };
 
   return (
