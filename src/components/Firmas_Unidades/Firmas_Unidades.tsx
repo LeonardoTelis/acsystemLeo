@@ -47,7 +47,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
   const history = useHistory();
   const [firmas, setFirmas] = useState([]);
   let [firmaID, setFirmaID] = useState<any>();
-  const [searchFirmas,setSearchFirmas] = useState("");
+  const [searchFirmas, setSearchFirmas] = useState("");
 
   useEffect(() => {
     searchUnidadesNegocio();
@@ -87,9 +87,11 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
         <br></br>
         <IonTitle>Firmas</IonTitle>
         <IonItem className="containerInputs containerInputPassword">
-          <input type="text" name="" id="" placeholder="Buscar Id" onChange={(event) =>{
-            setSearchFirmas(String(event.target.value))
-          }} />
+
+          <IonSearchbar
+            placeholder="Buscar por ID"
+            onIonChange={(e) => setSearchFirmas(e.detail.value!)}
+          ></IonSearchbar>
         </IonItem>
 
         <IonGrid className="table">
@@ -100,52 +102,58 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
             <IonCol>Nombre</IonCol>
             <IonCol>Acciones</IonCol>
           </IonRow>
-          {firmas.filter((firmas:any) => {
-            if(searchFirmas == ""){
-              return firmas
-            }else if(String(firmas.id).toLowerCase().includes(searchFirmas.toLocaleUpperCase())){
-              return firmas
-            }
-          }).map((firmas: any) => (
-            <IonRow>
-              <IonCol>{firmas.id}</IonCol>
-              <IonCol>{firmas.activo == true ? "Activo" : "Inactivo"}</IonCol>
-              <IonCol>{firmas.diasPromesa}</IonCol>
-              <IonCol>{firmas.nombre}</IonCol>
+          {firmas
+            .filter((firmas: any) => {
+              if (searchFirmas == "") {
+                return firmas;
+              } else if (
+                String(firmas.id)
+                  .toLowerCase()
+                  .includes(searchFirmas.toLocaleUpperCase())
+              ) {
+                return firmas;
+              }
+            })
+            .map((firmas: any) => (
+              <IonRow>
+                <IonCol>{firmas.id}</IonCol>
+                <IonCol>{firmas.activo == true ? "Activo" : "Inactivo"}</IonCol>
+                <IonCol>{firmas.diasPromesa}</IonCol>
+                <IonCol>{firmas.nombre}</IonCol>
 
-              <IonCol>
-                <IonButton
-                  color="primary"
-                  fill="clear"
-                  shape="round"
-                  size="small"
-                  onClick={() => edit(String(firmas.id))}
-                >
-                  <IonIcon icon={pencil} slot="icon-only" />
-                </IonButton>
-                <IonButton
-                  color="danger"
-                  fill="clear"
-                  shape="round"
-                  size="small"
-                  onClick={() => remove(Number(firmas.id))}
-                >
-                  <IonIcon icon={trash} slot="icon-only" />
-                </IonButton>
+                <IonCol>
+                  <IonButton
+                    color="primary"
+                    fill="clear"
+                    shape="round"
+                    size="small"
+                    onClick={() => edit(String(firmas.id))}
+                  >
+                    <IonIcon icon={pencil} slot="icon-only" />
+                  </IonButton>
+                  <IonButton
+                    color="danger"
+                    fill="clear"
+                    shape="round"
+                    size="small"
+                    onClick={() => remove(Number(firmas.id))}
+                  >
+                    <IonIcon icon={trash} slot="icon-only" />
+                  </IonButton>
 
-                <IonButton
-                  color="success"
-                  fill="clear"
-                  shape="round"
-                  id="open-modal"
-                  size="small"
-                  onClick={() => Unidades(String(firmas.id))}
-                >
-                  <IonIcon icon={business}></IonIcon>
-                </IonButton>
-              </IonCol>
-            </IonRow>
-          ))}
+                  <IonButton
+                    color="success"
+                    fill="clear"
+                    shape="round"
+                    id="open-modal"
+                    size="small"
+                    onClick={() => Unidades(String(firmas.id))}
+                  >
+                    <IonIcon icon={business}></IonIcon>
+                  </IonButton>
+                </IonCol>
+              </IonRow>
+            ))}
         </IonGrid>
       </IonCard>
     </IonContent>
