@@ -14,9 +14,11 @@ import {
   IonGrid,
   IonRow,
   IonCol,
+  IonIcon,
 } from '@ionic/react';
 import "./Unidades.css";
 import { OverlayEventDetail } from '@ionic/core/components';
+import { pencil, trash } from 'ionicons/icons';
 
 function Unidades_Negocio() {
   const modal = useRef<HTMLIonModalElement>(null);
@@ -65,8 +67,21 @@ function Unidades_Negocio() {
                 <IonCol>Status</IonCol>
                 <IonCol>Nombre</IonCol>
                 <IonCol>Script</IonCol>
-                <IonCol>Firma Id</IonCol>
+                <IonCol>Acciones</IonCol>
             </IonRow>
+            <IonCol>Id</IonCol>
+                <IonCol>Status</IonCol>
+                <IonCol>Nombre</IonCol>
+                <IonCol>Script</IonCol>
+
+                <IonCol> <IonButton color="primary" fill="clear" shape="round">
+                    <IonIcon icon={pencil} slot="icon-only" />
+                    </IonButton>
+
+                    <IonButton color="danger" fill="clear" shape="round">
+                    <IonIcon icon={trash} slot="icon-only" />
+                    </IonButton>
+                </IonCol>
           </IonGrid>
          
         </IonModal>
