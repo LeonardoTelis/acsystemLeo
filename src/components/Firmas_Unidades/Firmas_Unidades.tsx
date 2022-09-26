@@ -47,6 +47,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
   const history = useHistory();
   const [firmas, setFirmas] = useState([]);
   let [firmaID, setFirmaID] = useState<any>();
+  const [searchFirmas,setSearchFirmas] = useState("");
 
   useEffect(() => {
     searchUnidadesNegocio();
@@ -86,8 +87,9 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
         <br></br>
         <IonTitle>Firmas</IonTitle>
         <IonItem className="containerInputs containerInputPassword">
-          <IonLabel position="fixed">Id</IonLabel>
-          <IonInput type="text" name="nombre" id="nombre" />
+          <input type="text" name="" id="" placeholder="Buscar Id" onChange={(event) =>{
+            setSearchFirmas(String(event.target.value))
+          }} />
         </IonItem>
 
         <IonGrid className="table">
@@ -98,7 +100,13 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
             <IonCol>Nombre</IonCol>
             <IonCol>Acciones</IonCol>
           </IonRow>
-          {firmas.map((firmas: Firma) => (
+          {firmas.filter((firmas:any) => {
+            if(searchFirmas == ""){
+              return firmas
+            }else if(String(firmas.id).toLowerCase().includes(searchFirmas.toLocaleUpperCase())){
+              return firmas
+            }
+          }).map((firmas: any) => (
             <IonRow>
               <IonCol>{firmas.id}</IonCol>
               <IonCol>{firmas.activo == true ? "Activo" : "Inactivo"}</IonCol>

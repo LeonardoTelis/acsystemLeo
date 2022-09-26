@@ -38,7 +38,7 @@ import Unidades_Negocio from "./components/Unidades_Negocio/Unidades_Negocio";
 import UnidadesNegocioEdit from "./pages/UnidadesNegocioEdit";
 import Firmas from "./pages/Firmas";
 import FirmasEdit from "./pages/FirmasEdit";
-import searchBar from "./components/Firmas_Unidades/searchBar";
+
 
 setupIonicReact();
 
@@ -65,7 +65,6 @@ const App: React.FC = () => (
         <Route path="/Asignacion" component={Asignacion} exact={true} />
         <Route path="/Reportes" component={Reportes} exact={true} />
         <Route path="/Graficas" component={Graficas} exact={true} />
-        <Route path="/searchBar" component={searchBar} exact={true} />
         <Route path="/Unidades_Negocio/:id" component={Unidades_Negocio} exact={true} />
         <Route path="/Firmas_Unidades" component={Firmas} exact={true} />
         <Route path="/Firmas_UnidadesEdit/:id" component={FirmasEdit} exact={true} />
