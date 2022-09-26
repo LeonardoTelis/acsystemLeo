@@ -39,6 +39,7 @@ import UnidadesNegocioEdit from "./pages/UnidadesNegocioEdit";
 import Firmas from "./pages/Firmas";
 import FirmasEdit from "./pages/FirmasEdit";
 
+
 setupIonicReact();
 
 const App: React.FC = () => (
@@ -55,6 +56,7 @@ const App: React.FC = () => (
         <Route exact path="/reporteproduct">
           <ReporteProd></ReporteProd>
         </Route>
+        {/* <Route path="/Firmas_Unidades" component={Firmas_Unidades} exact={true} /> */}
         <Route path="/Promesas" component={Promesas} exact={true} />
         <Route path="/Pagos" component={Pagos} exact={true} />
         <Route path="/Importar" component={Importar} exact={true} />

@@ -17,9 +17,13 @@ import {
   IonMenu,
   IonPage,
   IonRow,
+  IonSearchbar,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import axios from "axios";
+import "./Firmas.css";
+import UnidadesNegocio from "../Unidades_Negocio/Unidades";
 import {
   business,
   businessOutline,
@@ -33,8 +37,9 @@ import { removeFirma, searchFirma } from "./Firmas_UnidadesApi";
 import Firma from "./Firma";
 import Firmas_UnidadesEdit from "./Firmas_UnidadesEdit";
 import { useHistory } from "react-router";
+import { error } from "console";
 // import { Container } from "react-dom";
-import Unidades_Negocio from "../Unidades_Negocio/Unidades_Negocio";
+// import Unidades_Negocio from "../Unidades_Negocio/Unidades_Negocio";
 
 interface ContainerProps {}
 
@@ -42,6 +47,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
   const history = useHistory();
   const [firmas, setFirmas] = useState([]);
   let [firmaID, setFirmaID] = useState<any>();
+  const [searchFirmas,setSearchFirmas] = useState("");
 
   useEffect(() => {
     searchUnidadesNegocio();
@@ -69,7 +75,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
     <IonContent>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Firmas y Unidades de negocio</IonTitle>
+          {/* <IonTitle>Firmas y Unidades de negocio</IonTitle> */}
           <IonButtons slot="end">
             <NavButtons />
           </IonButtons>
@@ -81,8 +87,9 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
         <br></br>
         <IonTitle>Firmas</IonTitle>
         <IonItem className="containerInputs containerInputPassword">
-          <IonLabel position="fixed">Id</IonLabel>
-          <IonInput type="text" name="nombre" id="nombre" />
+          <input type="text" name="" id="" placeholder="Buscar Id" onChange={(event) =>{
+            setSearchFirmas(String(event.target.value))
+          }} />
         </IonItem>
 
         <IonGrid className="table">
@@ -93,7 +100,13 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
             <IonCol>Nombre</IonCol>
             <IonCol>Acciones</IonCol>
           </IonRow>
-          {firmas.map((firmas: Firma) => (
+          {firmas.filter((firmas:any) => {
+            if(searchFirmas == ""){
+              return firmas
+            }else if(String(firmas.id).toLowerCase().includes(searchFirmas.toLocaleUpperCase())){
+              return firmas
+            }
+          }).map((firmas: any) => (
             <IonRow>
               <IonCol>{firmas.id}</IonCol>
               <IonCol>{firmas.activo == true ? "Activo" : "Inactivo"}</IonCol>
