@@ -17,17 +17,21 @@ import {
   IonMenu,
   IonPage,
   IonRow,
+  IonSearchbar,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
+import axios from "axios";
 import { checkmark, pencil, trash } from "ionicons/icons";
 import "./Firmas.css";
+import UnidadesNegocio from "../Unidades_Negocio/Unidades";
 import { removeFirma,  searchFirma } from "./Firmas_UnidadesApi";
 import Firma from "./Firma";
 import Firmas_UnidadesEdit from "./Firmas_UnidadesEdit";
 import { useHistory } from "react-router";
+import { error } from "console";
 // import { Container } from "react-dom";
-import Unidades_Negocio from "../Unidades_Negocio/Unidades_Negocio";
+// import Unidades_Negocio from "../Unidades_Negocio/Unidades_Negocio";
 
 
 interface ContainerProps{}
@@ -63,7 +67,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
     <IonContent>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Firmas y Unidades de negocio</IonTitle>
+          {/* <IonTitle>Firmas y Unidades de negocio</IonTitle> */}
           <IonButtons slot="end">
             <NavButtons />
           </IonButtons>
@@ -75,9 +79,10 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
           <br></br>
           <IonTitle >Firmas</IonTitle>
           <IonItem className="containerInputs containerInputPassword">
-                  <IonLabel position="fixed">Id</IonLabel>
-                  <IonInput type="text" name="nombre" id="nombre" />
+          {/* <ion-searchbar show-cancel-button="always" placeholder="Always Show"></ion-searchbar> */}
+          <IonSearchbar showCancelButton="never" cancel-button-icon="trash"  placeholder="ID"></IonSearchbar>
                 </IonItem>
+      
 
           <IonGrid className="table">
           <IonRow id="headerTable">

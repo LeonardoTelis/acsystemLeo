@@ -36,6 +36,7 @@ import Firmas_Unidades from "../src/components/Firmas_Unidades/Firmas_Unidades";
 import Firmas_UnidadesEdit from "../src/components/Firmas_Unidades/Firmas_UnidadesEdit";
 import Unidades_Negocio from "./components/Unidades_Negocio/Unidades_Negocio";
 import UnidadesNegocioEdit from "./pages/UnidadesNegocioEdit";
+import searchBar from "./components/Firmas_Unidades/searchBar";
 
 setupIonicReact();
 
@@ -53,6 +54,7 @@ const App: React.FC = () => (
         <Route exact path="/reporteproduct">
           <ReporteProd></ReporteProd>
         </Route>
+        {/* <Route path="/Firmas_Unidades" component={Firmas_Unidades} exact={true} /> */}
         <Route path="/Promesas" component={Promesas} exact={true} />
         <Route path="/Pagos" component={Pagos} exact={true} />
         <Route path="/Importar" component={Importar} exact={true} />
@@ -61,12 +63,9 @@ const App: React.FC = () => (
         <Route path="/Asignacion" component={Asignacion} exact={true} />
         <Route path="/Reportes" component={Reportes} exact={true} />
         <Route path="/Graficas" component={Graficas} exact={true} />
+        <Route path="/searchBar" component={searchBar} exact={true} />
         <Route path="/Unidades_Negocio/:id" component={Unidades_Negocio} exact={true} />
-        <Route
-          path="/Firmas_Unidades"
-          component={Firmas_Unidades}
-          exact={true}
-        />
+      
         <Route
           path="/Firmas_UnidadesEdit/:id"
           component={Firmas_UnidadesEdit}
@@ -74,6 +73,9 @@ const App: React.FC = () => (
         />
         <Route path="/CreditoStatus" render={() => (<CreditoStatus/>)} exact={true}>
           <CreditoStatus></CreditoStatus>
+        </Route>
+        <Route path="/Firmas_Unidades" render={() => (<Firmas_Unidades/>)} exact={true}>
+          <Firmas_Unidades></Firmas_Unidades>
         </Route>
         <Route path="/CreditoStatus/edit/:id" exact={true}>
           <CreditoStatusEdit></CreditoStatusEdit>

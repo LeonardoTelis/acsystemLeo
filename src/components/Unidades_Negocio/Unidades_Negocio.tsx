@@ -15,7 +15,7 @@ import {
   IonRow,
   IonCol,
   IonIcon,
-} from "@ionic/react";
+} from '@ionic/react';
 import "./Unidades.css";
 import { OverlayEventDetail } from "@ionic/core/components";
 import { removeUnidadNegocio, searchUnidadById } from "./Unidades_NegocioApi";
