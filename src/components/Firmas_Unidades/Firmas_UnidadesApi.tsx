@@ -1,10 +1,6 @@
 import axios, { Axios } from "axios";
 import Firma from "./Firma";
 
-let token = localStorage.getItem("token");
-let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
-let authorization = `Bearer ${tokenDeAcceso}`;
-
 export async function searchFirma() {
   let response = await fetch(`http://localhost:8080/acsystem/firmas`, {
     method: "GET",
@@ -17,6 +13,9 @@ export async function searchFirma() {
 }
 
 export const searchFirmaById = async (id: String) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
   try {
     let res = await axios({
       url: `http://localhost:8080/acsystem/firmas/${id}`,
@@ -24,7 +23,7 @@ export const searchFirmaById = async (id: String) => {
       timeout: 8000,
       headers: {
         "Content-Type": "application/json",
-        "Authorization": authorization,
+        Authorization: authorization,
       },
     });
     if (res.status == 200) {
@@ -40,16 +39,22 @@ export const searchFirmaById = async (id: String) => {
 
 export async function removeFirma(id: Number) {
   let URL = `http://localhost:8080/acsystem/firmas/${id}`;
+
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
   let authorization = `Bearer ${tokenDeAcceso}`;
 
   await axios.delete(URL, {
     headers: {
-      "Authorization": authorization,
+      Authorization: authorization,
     },
   });
 }
 
 export const editFirma = async (firma: Firma) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
   try {
     await axios({
       method: "put",
@@ -59,9 +64,9 @@ export const editFirma = async (firma: Firma) => {
         activo: firma.activo,
         diasPromesa: firma.diasPromesa,
       },
-      headers:{
-        "Authorization": authorization,
-      }
+      headers: {
+        Authorization: authorization,
+      },
     });
   } catch (err) {
     if (err.response.status === 404) {
@@ -71,4 +76,3 @@ export const editFirma = async (firma: Firma) => {
     }
   }
 };
-
