@@ -14,7 +14,7 @@ import {
   IonSearchbar,
   IonTitle,
 } from "@ionic/react";
-import { pencil, searchOutline, trash } from "ionicons/icons";
+import { add, pencil, searchOutline, trash } from "ionicons/icons";
 import { useEffect, useState } from "react";
 import "./MuestraStatus.css";
 import { useHistory } from "react-router";
@@ -47,11 +47,22 @@ const MuestraStatus: React.FC<ContainerProps> = () => {
     history.push("/CreditoStatus/edit/" + id);
   };
 
+  const addCredito = () =>{
+    history.push("/CreditoStatus/add");
+  }
+
   return (
     <IonContent>
       <IonCard className="containerTable">
-        <IonTitle>Gestion de los status</IonTitle>
+        <IonItem>
+          <IonTitle>Gestion de los status</IonTitle>
+          <IonButton color="primary" fill="solid" onClick={() => addCredito()}>
+            <IonIcon icon={add}></IonIcon>
+            Agregar credito
+          </IonButton>
+        </IonItem>
         <IonSearchbar
+          show-clear-button="focus"
           placeholder="Buscar por ID"
           onIonChange={(e) => setSearchTerm(e.detail.value!)}
         ></IonSearchbar>
