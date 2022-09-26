@@ -20,17 +20,23 @@ import {
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import { checkmark, pencil, trash } from "ionicons/icons";
+import {
+  business,
+  businessOutline,
+  businessSharp,
+  checkmark,
+  pencil,
+  trash,
+} from "ionicons/icons";
 import "./Firmas.css";
-import { removeFirma,  searchFirma } from "./Firmas_UnidadesApi";
+import { removeFirma, searchFirma } from "./Firmas_UnidadesApi";
 import Firma from "./Firma";
 import Firmas_UnidadesEdit from "./Firmas_UnidadesEdit";
 import { useHistory } from "react-router";
 // import { Container } from "react-dom";
 import Unidades_Negocio from "../Unidades_Negocio/Unidades_Negocio";
 
-
-interface ContainerProps{}
+interface ContainerProps {}
 
 const Firmas_Unidades: React.FC<ContainerProps> = () => {
   const history = useHistory();
@@ -39,7 +45,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
 
   useEffect(() => {
     searchUnidadesNegocio();
-  }, []);
+  }, [history.location.pathname]);
 
   const searchUnidadesNegocio = async () => {
     let result = await searchFirma();
@@ -69,17 +75,17 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
           </IonButtons>
         </IonToolbar>
       </IonHeader>
-      
-        <br></br>
-        <IonCard className="containerTable">
-          <br></br>
-          <IonTitle >Firmas</IonTitle>
-          <IonItem className="containerInputs containerInputPassword">
-                  <IonLabel position="fixed">Id</IonLabel>
-                  <IonInput type="text" name="nombre" id="nombre" />
-                </IonItem>
 
-          <IonGrid className="table">
+      <br></br>
+      <IonCard className="containerTable">
+        <br></br>
+        <IonTitle>Firmas</IonTitle>
+        <IonItem className="containerInputs containerInputPassword">
+          <IonLabel position="fixed">Id</IonLabel>
+          <IonInput type="text" name="nombre" id="nombre" />
+        </IonItem>
+
+        <IonGrid className="table">
           <IonRow id="headerTable">
             <IonCol>ID</IonCol>
             <IonCol>Status</IonCol>
@@ -87,38 +93,50 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
             <IonCol>Nombre</IonCol>
             <IonCol>Acciones</IonCol>
           </IonRow>
-        {firmas.map((firmas: Firma) => (
-          <IonRow>
-            <IonCol>{firmas.id}</IonCol>
-            <IonCol>{firmas.activo == true ? "Activo" : "Inactivo"}</IonCol>
-            <IonCol>{firmas.diasPromesa}</IonCol>
-            <IonCol>{firmas.nombre}</IonCol>
+          {firmas.map((firmas: Firma) => (
+            <IonRow>
+              <IonCol>{firmas.id}</IonCol>
+              <IonCol>{firmas.activo == true ? "Activo" : "Inactivo"}</IonCol>
+              <IonCol>{firmas.diasPromesa}</IonCol>
+              <IonCol>{firmas.nombre}</IonCol>
 
-            <IonCol>
-                <IonButton color="primary" fill="clear" shape="round" onClick={() => edit(String(firmas.id))}>
+              <IonCol>
+                <IonButton
+                  color="primary"
+                  fill="clear"
+                  shape="round"
+                  size="small"
+                  onClick={() => edit(String(firmas.id))}
+                >
                   <IonIcon icon={pencil} slot="icon-only" />
                 </IonButton>
                 <IonButton
                   color="danger"
                   fill="clear"
                   shape="round"
+                  size="small"
                   onClick={() => remove(Number(firmas.id))}
                 >
                   <IonIcon icon={trash} slot="icon-only" />
                 </IonButton>
 
-                <IonButton id="open-modal" expand="block"
-                onClick={() => Unidades(String(firmas.id))}>
-                  Unidades de negocio
-              </IonButton>
+                <IonButton
+                  color="success"
+                  fill="clear"
+                  shape="round"
+                  id="open-modal"
+                  size="small"
+                  onClick={() => Unidades(String(firmas.id))}
+                >
+                  <IonIcon icon={business}></IonIcon>
+                </IonButton>
               </IonCol>
-          </IonRow>
-        ))}
-          </IonGrid>
-        </IonCard>
+            </IonRow>
+          ))}
+        </IonGrid>
+      </IonCard>
     </IonContent>
   );
 };
 
 export default Firmas_Unidades;
-

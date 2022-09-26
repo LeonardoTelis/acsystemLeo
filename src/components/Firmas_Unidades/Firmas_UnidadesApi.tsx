@@ -1,4 +1,5 @@
 import axios, { Axios } from "axios";
+import { useHistory } from "react-router";
 import Firma from "./Firma";
 
 export async function searchFirma() {
@@ -67,7 +68,8 @@ export const editFirma = async (firma: Firma) => {
       headers: {
         Authorization: authorization,
       },
-    });
+    })
+  return true;
   } catch (err) {
     if (err.response.status === 404) {
       console.log("Resource could not be found!");

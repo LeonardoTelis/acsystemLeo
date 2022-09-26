@@ -38,8 +38,10 @@ const EditarCreditoStatus: React.FC<ContainerProps> = () => {
   }
 
   const edit = async () => {
-    await editCredito(creditos)
-    history.push("/CreditoStatus");
+    let response = await editCredito(creditos);
+    if(response){
+      history.push("/CreditoStatus");
+    }
   }
 
 

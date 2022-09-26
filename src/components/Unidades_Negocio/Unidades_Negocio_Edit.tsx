@@ -1,9 +1,11 @@
 import {
   IonButton,
+  IonButtons,
   IonCard,
   IonCol,
   IonContent,
   IonGrid,
+  IonHeader,
   IonIcon,
   IonInput,
   IonItem,
@@ -13,6 +15,7 @@ import {
   IonSelect,
   IonSelectOption,
   IonTitle,
+  IonToolbar,
 } from "@ionic/react";
 import { pencil, searchOutline, trash } from "ionicons/icons";
 import { useEffect, useState } from "react";
@@ -20,14 +23,17 @@ import { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router";
 import { NavButtons } from "../NavButtons";
 import Unidades from "./Unidades";
-import { editUnidadNegocio, searchUnidadNegocioById } from "./Unidades_NegocioApi";
+import {
+  editUnidadNegocio,
+  searchUnidadNegocioById,
+} from "./Unidades_NegocioApi";
 // import "./Firmas.css";
 
 interface ContainerProps {}
 
 const Unidades_Negocio_Edit: React.FC<ContainerProps> = () => {
   const history = useHistory();
-  const id = useParams<{ idFirma: string, idUnidadNegocio:string }>();
+  const id = useParams<{ idFirma: string; idUnidadNegocio: string }>();
   const [unidadNegocio, setUnidadNegocio] = useState<Unidades>({});
   console.table(id);
   useEffect(() => {
@@ -35,18 +41,25 @@ const Unidades_Negocio_Edit: React.FC<ContainerProps> = () => {
   }, []);
 
   const search = async () => {
-    let result = await searchUnidadNegocioById(String(id.idFirma),String(id.idUnidadNegocio));
+    let result = await searchUnidadNegocioById(
+      String(id.idFirma),
+      String(id.idUnidadNegocio)
+    );
     setUnidadNegocio(result);
   };
 
   const edit = async () => {
-    await editUnidadNegocio(unidadNegocio,String(id.idFirma),String(id.idUnidadNegocio));
+    await editUnidadNegocio(
+      unidadNegocio,
+      String(id.idFirma),
+      String(id.idUnidadNegocio)
+    );
     history.push("/Firmas_Unidades");
   };
   return (
     <IonContent>
       <IonCard className="containerTable">
-        <IonTitle>Editar Firma</IonTitle>
+        <IonTitle>Editar Unidad de Negocio</IonTitle>
         <IonItem className="conteiner" lines="none">
           <IonGrid>
             <IonRow className="containerForm">
@@ -68,7 +81,9 @@ const Unidades_Negocio_Edit: React.FC<ContainerProps> = () => {
                   name="nombre"
                   id="nombre"
                   value={unidadNegocio.nombre}
-                  onIonChange={(e) => (unidadNegocio.nombre = String(e.detail.value))}
+                  onIonChange={(e) =>
+                    (unidadNegocio.nombre = String(e.detail.value))
+                  }
                 />
               </IonItem>
               <IonButton size="small" class="btnEntrar" onClick={edit}>

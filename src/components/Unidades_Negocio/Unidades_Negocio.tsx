@@ -15,6 +15,7 @@ import {
   IonRow,
   IonCol,
   IonIcon,
+  IonCard,
 } from "@ionic/react";
 import "./Unidades.css";
 import { OverlayEventDetail } from "@ionic/core/components";
@@ -23,6 +24,7 @@ import { useParams } from "react-router";
 import UnidadesNegocio from "./Unidades";
 import { pencil, search, trash } from "ionicons/icons";
 import { useHistory } from "react-router";
+import NavButtons from "../NavButtons";
 
 function Unidades_Negocio() {
   const history = useHistory();
@@ -64,32 +66,16 @@ function Unidades_Negocio() {
 
   return (
     <IonPage>
-      <IonContent className="ion-padding">
-        <IonButton id="open-modal" expand="block">
-          Unidades de negocio
-        </IonButton>
-        <p>{message}</p>
-        <IonModal
-          ref={modal}
-          trigger="open-modal"
-          onWillDismiss={(ev) => onWillDismiss(ev)}
-        >
-          <IonHeader>
-            <IonToolbar>
-              <IonButtons slot="start">
-                <IonButton onClick={() => modal.current?.dismiss()}>
-                  Cancelar
-                </IonButton>
-              </IonButtons>
-              <IonTitle>Editar Unidades de negocio</IonTitle>
-              <IonButtons slot="end">
-                <IonButton strong={true} onClick={() => confirm()}>
-                  Guardar
-                </IonButton>
-              </IonButtons>
-            </IonToolbar>
-          </IonHeader>
-
+      <IonContent>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Firmas y Unidades de negocio</IonTitle>
+          <IonButtons slot="end">
+            <NavButtons />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+        <IonCard>
           <IonGrid className="table">
             <IonRow id="headerTable">
               <IonCol>Id</IonCol>
@@ -129,10 +115,9 @@ function Unidades_Negocio() {
               </IonRow>
             ))}
           </IonGrid>
-        </IonModal>
+        </IonCard>
       </IonContent>
     </IonPage>
   );
 }
-
 export default Unidades_Negocio;

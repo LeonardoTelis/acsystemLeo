@@ -1,9 +1,11 @@
 import {
   IonButton,
+  IonButtons,
   IonCard,
   IonCol,
   IonContent,
   IonGrid,
+  IonHeader,
   IonIcon,
   IonInput,
   IonItem,
@@ -13,6 +15,7 @@ import {
   IonSelect,
   IonSelectOption,
   IonTitle,
+  IonToolbar,
 } from "@ionic/react";
 import { pencil, searchOutline, trash } from "ionicons/icons";
 import { useEffect, useState } from "react";
@@ -40,11 +43,23 @@ const Firmas_UnidadesEdit: React.FC<ContainerProps> = () => {
   };
 
   const edit = async () => {
-    await editFirma(firma);
-    history.push("/Firmas_Unidades");
+    let response = await editFirma(firma);
+    if(response){
+      history.push("/Firmas_Unidades");
+    }
   };
   return (
     <IonContent>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Edit Firma</IonTitle>
+          <IonButtons slot="end">
+            <NavButtons />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+
+      <br></br>
       <IonCard className="containerTable">
         <IonTitle>Editar Firma</IonTitle>
         <IonItem className="conteiner" lines="none">
