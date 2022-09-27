@@ -75,7 +75,6 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
     <IonContent>
       <IonHeader>
         <IonToolbar>
-          {/* <IonTitle>Firmas y Unidades de negocio</IonTitle> */}
           <IonButtons slot="end">
             <NavButtons />
           </IonButtons>
@@ -85,14 +84,16 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
       <br></br>
       <IonCard className="containerTable">
         <br></br>
+      
+        <IonItem lines="none">
         <IonTitle>Firmas</IonTitle>
-        <IonItem className="containerInputs containerInputPassword">
-
-          <IonSearchbar
+        <IonButton  id="btn-mostrarfirma" shape="round">Agregar Firma</IonButton>
+        </IonItem>
+        
+          <IonSearchbar 
             placeholder="Buscar por ID"
             onIonChange={(e) => setSearchFirmas(e.detail.value!)}
           ></IonSearchbar>
-        </IonItem>
 
         <IonGrid className="table">
           <IonRow id="headerTable">

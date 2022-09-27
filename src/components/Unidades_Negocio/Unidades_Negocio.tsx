@@ -22,6 +22,7 @@ import { OverlayEventDetail } from "@ionic/core/components";
 import { removeUnidadNegocio, searchUnidadById } from "./Unidades_NegocioApi";
 import { useParams } from "react-router";
 import UnidadesNegocio from "./Unidades";
+import Agregar_Unidad from "./Agregar_Unidad";
 import { pencil, search, trash } from "ionicons/icons";
 import { useHistory } from "react-router";
 import NavButtons from "../NavButtons";
@@ -31,17 +32,17 @@ function Unidades_Negocio() {
   const modal = useRef<HTMLIonModalElement>(null);
   const input = useRef<HTMLIonInputElement>(null);
 
-  const [message, setMessage] = useState("Levi te amo");
+  // const [message, setMessage] = useState("Levi te amo");
 
-  function confirm() {
-    modal.current?.dismiss(input.current?.value, "confirm");
-  }
+  // function confirm() {
+  //   modal.current?.dismiss(input.current?.value, "confirm");
+  // }
 
-  function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
-    if (ev.detail.role === "confirm") {
-      setMessage(`Hello, ${ev.detail.data}!`);
-    }
-  }
+  // function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
+  //   if (ev.detail.role === "confirm") {
+  //     setMessage(`Hello, ${ev.detail.data}!`);
+  //   }
+  // }
 
   const [unidadesNegocio, setUnidadesNegocio] = useState([]);
   const idFirma = useParams<{ id: string }>();
@@ -69,13 +70,19 @@ function Unidades_Negocio() {
       <IonContent>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Firmas y Unidades de negocio</IonTitle>
           <IonButtons slot="end">
             <NavButtons />
           </IonButtons>
         </IonToolbar>
       </IonHeader>
+
         <IonCard>
+        <IonItem lines="none">
+        <IonTitle>Firmas</IonTitle>
+        <IonButton  id="btn-mostrarfirma" shape="round">Agregar Unidad</IonButton>
+        </IonItem>
+        
+
           <IonGrid className="table">
             <IonRow id="headerTable">
               <IonCol>Id</IonCol>

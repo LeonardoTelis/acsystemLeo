@@ -51,7 +51,7 @@ const MuestraStatus: React.FC<ContainerProps> = () => {
     <IonContent>
       <IonCard className="containerTable">
         <IonTitle>Gestion de los status</IonTitle>
-        <IonSearchbar
+        <IonSearchbar 
           placeholder="Buscar por ID"
           onIonChange={(e) => setSearchTerm(e.detail.value!)}
         ></IonSearchbar>
