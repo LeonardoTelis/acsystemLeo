@@ -22,16 +22,29 @@ import { OverlayEventDetail } from "@ionic/core/components";
 import { removeUnidadNegocio, searchUnidadById } from "./Unidades_NegocioApi";
 import { useParams } from "react-router";
 import UnidadesNegocio from "./Unidades";
-import { pencil, search, trash } from "ionicons/icons";
+import Agregar_Unidad from "./Agregar_Unidad";
+import { add, pencil, search, trash } from "ionicons/icons";
 import { useHistory } from "react-router";
 import NavButtons from "../NavButtons";
 
 function Unidades_Negocio() {
   const history = useHistory();
+ 
 
+  // const [message, setMessage] = useState("Levi te amo");
 
-  let [unidadesNegocio, setUnidadesNegocio] = useState([]);
-  const idFirma = useParams<{ id: any }>();
+  // function confirm() {
+  //   modal.current?.dismiss(input.current?.value, "confirm");
+  // }
+
+  // function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
+  //   if (ev.detail.role === "confirm") {
+  //     setMessage(`Hello, ${ev.detail.data}!`);
+  //   }
+  // }
+
+  const [unidadesNegocio, setUnidadesNegocio] = useState([]);
+  const idFirma = useParams<{ id: string }>();
 
   useEffect(() => {
     search();
@@ -51,9 +64,29 @@ function Unidades_Negocio() {
     history.push(`/Unidades_Negocio/${idFirma.id}/Unidades_Negocio_Edit/${id}`);
   };
 
+  const addUnidades = () =>{
+    history.push("/Agregar_Unidad/add");
+  }
+
   return (
       <IonContent>
-      <IonCard>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="end">
+            <NavButtons />
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+
+        <IonCard>
+
+        <IonItem lines="none">
+        <IonTitle>Unidades de Negocio</IonTitle>
+          <IonButton color="primary" fill="solid" onClick={() => addUnidades()}>
+            <IonIcon icon={add}></IonIcon>
+            Agregar Unidad
+          </IonButton>
+        </IonItem>
           <IonGrid className="table">
             <IonRow id="headerTable">
               <IonCol>Id</IonCol>

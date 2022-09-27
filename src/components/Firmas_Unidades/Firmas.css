@@ -25,3 +25,12 @@
     color: black;
   }
   
+  .btn-mostrarfirma{
+    align-items:stretch;
+    /* font-size: 1.6rem;
+    margin: 3rem auto; */
+    display: inline-block;
+    padding: 0.85em 1.5em;
+  }
+
+ 
