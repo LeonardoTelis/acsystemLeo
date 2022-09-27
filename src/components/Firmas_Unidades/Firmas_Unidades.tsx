@@ -91,7 +91,7 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
       
         <IonItem lines="none">
         <IonTitle>Firmas</IonTitle>
-        <IonButton  id="btn-mostrarfirma" shape="round"  onClick={() => addFirma()}>
+        <IonButton color="primary" fill="solid" onClick={() => addFirma()}>
         <IonIcon icon={add}></IonIcon>Agregar Firma</IonButton>
         </IonItem>
         

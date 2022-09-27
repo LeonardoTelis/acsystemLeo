@@ -7,12 +7,12 @@ import {
     IonToolbar,
   } from "@ionic/react";
   import { Redirect } from "react-router";
-import Agregar_FirmaComponent from "../components/Firmas_Unidades/Agregar_Firma";
+import AddCreditoStatusComponent from "../components/CreditoStatus/AddCreditoStatus";
   import MuestraStatus from "../components/CreditoStatus/MuestraStatus";
   import ValidarToken from "../components/Login/ValidarToken";
   import NavButtons from "../components/NavButtons";
   
-  const Agregar_Firma: React.FC = () => {
+  const Agregar_Unidad: React.FC = () => {
     if (!ValidarToken()) {
       return <Redirect to="/Login" />;
     }
@@ -20,18 +20,18 @@ import Agregar_FirmaComponent from "../components/Firmas_Unidades/Agregar_Firma"
       <IonPage>
         <IonHeader>
           <IonToolbar>
-            <IonTitle>Añadir nueva<br></br>Firma</IonTitle>
+            <IonTitle>Añadir nueva<br></br>Unidad</IonTitle>
             <IonButtons slot="end">
               <NavButtons />
             </IonButtons>
           </IonToolbar>
         </IonHeader>
         <IonContent>
-          <Agregar_FirmaComponent></Agregar_FirmaComponent>
+          <AddCreditoStatusComponent></AddCreditoStatusComponent>
         </IonContent>
       </IonPage>
     );
   };
   
-  export default Agregar_Firma;
+  export default Agregar_Unidad;
   

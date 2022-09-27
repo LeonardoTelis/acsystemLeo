@@ -51,9 +51,9 @@ function Unidades_Negocio() {
     history.push(`/Unidades_Negocio/${idFirma.id}/Unidades_Negocio_Edit/${id}`);
   };
 
-  const addUnidades = () => {
-    history.push("/Agregar_Unidad/add");
-  };
+  const addUnidades = () =>{
+    history.push(`/Agregar_Unidad/${idFirma.id}/add`);
+  }
 
   return (
     <IonContent>

@@ -98,16 +98,16 @@ export const editUnidadNegocio = async (unidadNegocio:any,idFirma:String,idUnida
   }
 };
 
-export const saveUnidadNegocio = async (unidadNegocio: Unidades,firmaId:any) => {
+export const saveUnidad = async (unidadNegocio:Unidades,firmaId:any) => {
   let token = localStorage.getItem("token");
   let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
   let authorization = `Bearer ${tokenDeAcceso}`;
 
   const newPost = {
-    nombre: unidadNegocio.nombre,
     activo: unidadNegocio.activo,
-    script: unidadNegocio.script,
-    firma_id: firmaId,
+    nombre: unidadNegocio.nombre,
+	  script: unidadNegocio.script,
+    firma_id:firmaId
   };
 
   const sendPostRequest = async () => {
