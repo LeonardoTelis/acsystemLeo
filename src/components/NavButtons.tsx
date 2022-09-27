@@ -18,8 +18,8 @@ import "./navbar.css";
                 <IonMenuButton color="primary"/>
             ) : (
                 <>
-   
-                <IonButton routerLink={"/Firmas_Unidades"}>Firmas Unidad</IonButton>
+                {/* <IonButton routerLink={"/Firmas_Unidades"}>Firmas Unidad</IonButton> */}
+                <IonButton href="http://localhost:3000/Firmas_Unidades">Firmas Unidad</IonButton>
                 <IonButton routerLink={"/CreditoStatus"}>Credito Status</IonButton>   
                 <IonButton routerLink={"/reporteproduct"}>ReporteProd</IonButton>
                 <IonButton routerLink={"/Promesas"}>Promesas</IonButton>
