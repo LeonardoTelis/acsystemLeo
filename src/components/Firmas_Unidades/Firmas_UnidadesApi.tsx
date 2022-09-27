@@ -92,7 +92,7 @@ export const saveFirma = async (firma: Firma) => {
 
   const sendPostRequest = async () => {
     try {
-        const resp = await axios.post('http://localhost:8080/acsystem/creditos/status/', newPost,{
+        const resp = await axios.post('http://localhost:8080/acsystem/firmas', newPost,{
           headers: {
             'Authorization': authorization,
           },

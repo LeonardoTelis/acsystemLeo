@@ -18,7 +18,7 @@ import {
   import { useEffect, useState } from "react";
   import "./MuestraStatus.css";
   import { useHistory, useParams } from "react-router";
-  import { searchCreditoById, editCredito } from "./MuestraStatusApi";
+  import { searchCreditoById, editCredito, saveCredito } from "./MuestraStatusApi";
   import Status from "./Status";
   
   interface ContainerProps {}
@@ -28,20 +28,9 @@ import {
     const history = useHistory();
     const [creditos, setCreditos] = useState<Status>({})
   
-    useEffect(() =>{
-      search();
-    },[]);
-  
-    const search = async () =>{
-      let result = await searchCreditoById(String(id.id));
-      setCreditos(result)
-    }
-  
-    const edit = async () => {
-      let response = await editCredito(creditos);
-      if(response){
-        history.push("/CreditoStatus");
-      }
+    const save = async () =>{
+      let result = await saveCredito(creditos);
+      history.push("/CreditoStatus");
     }
 
     return (
@@ -51,18 +40,18 @@ import {
           <IonItem className="conteiner" lines="none">
             <IonGrid>
               <IonRow className="containerForm">
-                {/* <IonItem className="containerInputs containerInputUsuario">
+                <IonItem className="containerInputs containerInputUsuario">
                   <IonLabel position="fixed">Status</IonLabel>
-                  <IonSelect placeholder="Seleccionar Status" onIonChange={(e) => (creditos.activo = (e.detail.value))} value={creditos.activo}>
+                  <IonSelect placeholder="Seleccionar Status" onIonChange={(e) => (creditos.activo = (e.detail.value))}>
                     <IonSelectOption value={true}>Activo</IonSelectOption>
                     <IonSelectOption value={false}>Inactivo</IonSelectOption>
                   </IonSelect>
                 </IonItem>
                 <IonItem className="containerInputs containerInputPassword">
                   <IonLabel position="fixed">Nombre</IonLabel>
-                  <IonInput type="text" name="nombre" id="nombre" value={creditos.nombre} onIonChange={(e) => (creditos.nombre = (String(e.detail.value)))}/>
-                </IonItem> */}
-                <IonButton size="small" class="btnEntrar" onClick={edit}>
+                  <IonInput type="text" name="nombre" id="nombre" onIonChange={(e) => (creditos.nombre = (String(e.detail.value)))}/>
+                </IonItem>
+                <IonButton size="small" class="btnEntrar" onClick={save}>
                   Guardar Credito
                 </IonButton>
               </IonRow>
