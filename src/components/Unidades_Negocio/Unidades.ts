@@ -1,5 +1,5 @@
 export default interface UnidadesNegocio {
-    id?: string,
+    id?: Number,
     activo?:boolean,
     nombre?:string
     script?:string,
