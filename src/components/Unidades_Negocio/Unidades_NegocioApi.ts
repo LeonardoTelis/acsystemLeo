@@ -2,15 +2,15 @@ import axios, { Axios } from "axios";
 import Unidades from "./Unidades";
 // import Firma from "./Firma";
 
-export const searchUnidadById = async (id: String) => {
+export const searchUnidadById = async (id: Number) => {
   let token = localStorage.getItem("token");
   let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
   let authorization = `Bearer ${tokenDeAcceso}`;
   try {
     let res = await axios({
-      url: `http://localhost:8080/acsystem/firmas/${id}/unidadesNegocio`,
+      url: `http://localhost:8080/acsystem/firmas/${id}/unidadesNegocio/`,
       method: "get",
-      timeout: 8000,
+      // timeout: 8000,
       headers: {
         "Content-Type": "application/json",
         Authorization: authorization,

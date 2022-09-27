@@ -48,10 +48,10 @@ function Unidades_Negocio() {
 
   useEffect(() => {
     search();
-  }, []);
+  }, [history.location.pathname]);
 
   const search = async () => {
-    let result = await searchUnidadById(String(idFirma.id));
+    let result = await searchUnidadById(idFirma.id);
     setUnidadesNegocio(result);
   };
 
@@ -69,7 +69,6 @@ function Unidades_Negocio() {
   }
 
   return (
-    <IonPage>
       <IonContent>
       <IonHeader>
         <IonToolbar>
@@ -97,15 +96,15 @@ function Unidades_Negocio() {
               <IonCol>Firma Id</IonCol>
               <IonCol>Acciones</IonCol>
             </IonRow>
-            {unidadesNegocio.map((unidadNegocio: UnidadesNegocio) => (
+            {unidadesNegocio.map((unidadNegocio: any) => (
               <IonRow>
-                <IonCol>{unidadNegocio.id}</IonCol>
+                <IonCol>{String(unidadNegocio.id)}</IonCol>
                 <IonCol>
                   {unidadNegocio.activo == true ? "Activo" : "Inactivo"}
                 </IonCol>
                 <IonCol>{unidadNegocio.nombre}</IonCol>
                 <IonCol>{unidadNegocio.script}</IonCol>
-                <IonCol>{idFirma.id}</IonCol>
+                <IonCol>{unidadNegocio.firma_id}</IonCol>
                 <IonCol>
                   <IonButton
                     color="primary"
@@ -129,7 +128,6 @@ function Unidades_Negocio() {
           </IonGrid>
         </IonCard>
       </IonContent>
-    </IonPage>
   );
 }
 export default Unidades_Negocio;
