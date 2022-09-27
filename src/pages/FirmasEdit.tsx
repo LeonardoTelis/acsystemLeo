@@ -11,7 +11,7 @@ import {
 
 import Firmas_UnidadesEdit from "../components/Firmas_Unidades/Firmas_UnidadesEdit";
 
-const Graficas: React.FC = () => {
+const FirmasEdit: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -21,4 +21,4 @@ const Graficas: React.FC = () => {
   );
 };
 
-export default Graficas;
+export default FirmasEdit;

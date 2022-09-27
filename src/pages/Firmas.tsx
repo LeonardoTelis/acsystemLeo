@@ -10,7 +10,7 @@ import {
 } from "@ionic/react";
 import Firmas_Unidades from "../components/Firmas_Unidades/Firmas_Unidades";
 
-const Graficas: React.FC = () => {
+const Firmas: React.FC = () => {
   return (
     <IonPage>
       <IonContent fullscreen>
@@ -20,4 +20,4 @@ const Graficas: React.FC = () => {
   );
 };
 
-export default Graficas;
+export default Firmas;

@@ -28,30 +28,17 @@ import NavButtons from "../NavButtons";
 
 function Unidades_Negocio() {
   const history = useHistory();
-  const modal = useRef<HTMLIonModalElement>(null);
-  const input = useRef<HTMLIonInputElement>(null);
 
-  const [message, setMessage] = useState("Levi te amo");
 
-  function confirm() {
-    modal.current?.dismiss(input.current?.value, "confirm");
-  }
-
-  function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
-    if (ev.detail.role === "confirm") {
-      setMessage(`Hello, ${ev.detail.data}!`);
-    }
-  }
-
-  const [unidadesNegocio, setUnidadesNegocio] = useState([]);
-  const idFirma = useParams<{ id: string }>();
+  let [unidadesNegocio, setUnidadesNegocio] = useState([]);
+  const idFirma = useParams<{ id: any }>();
 
   useEffect(() => {
     search();
-  }, []);
+  }, [history.location.pathname]);
 
   const search = async () => {
-    let result = await searchUnidadById(String(idFirma.id));
+    let result = await searchUnidadById(idFirma.id);
     setUnidadesNegocio(result);
   };
 
@@ -65,17 +52,8 @@ function Unidades_Negocio() {
   };
 
   return (
-    <IonPage>
       <IonContent>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Firmas y Unidades de negocio</IonTitle>
-          <IonButtons slot="end">
-            <NavButtons />
-          </IonButtons>
-        </IonToolbar>
-      </IonHeader>
-        <IonCard>
+      <IonCard>
           <IonGrid className="table">
             <IonRow id="headerTable">
               <IonCol>Id</IonCol>
@@ -85,15 +63,15 @@ function Unidades_Negocio() {
               <IonCol>Firma Id</IonCol>
               <IonCol>Acciones</IonCol>
             </IonRow>
-            {unidadesNegocio.map((unidadNegocio: UnidadesNegocio) => (
+            {unidadesNegocio.map((unidadNegocio: any) => (
               <IonRow>
-                <IonCol>{unidadNegocio.id}</IonCol>
+                <IonCol>{String(unidadNegocio.id)}</IonCol>
                 <IonCol>
                   {unidadNegocio.activo == true ? "Activo" : "Inactivo"}
                 </IonCol>
                 <IonCol>{unidadNegocio.nombre}</IonCol>
                 <IonCol>{unidadNegocio.script}</IonCol>
-                <IonCol>{idFirma.id}</IonCol>
+                <IonCol>{unidadNegocio.firma_id}</IonCol>
                 <IonCol>
                   <IonButton
                     color="primary"
@@ -117,7 +95,6 @@ function Unidades_Negocio() {
           </IonGrid>
         </IonCard>
       </IonContent>
-    </IonPage>
   );
 }
 export default Unidades_Negocio;
