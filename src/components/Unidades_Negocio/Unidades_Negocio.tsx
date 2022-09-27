@@ -26,6 +26,7 @@ import Agregar_Unidad from "./Agregar_Unidad";
 import { add, pencil, search, trash } from "ionicons/icons";
 import { useHistory } from "react-router";
 import NavButtons from "../NavButtons";
+import axios from "axios";
 
 function Unidades_Negocio() {
   const history = useHistory();
