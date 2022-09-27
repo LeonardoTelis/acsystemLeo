@@ -51,7 +51,7 @@ function Unidades_Negocio() {
   }, [history.location.pathname]);
 
   const search = async () => {
-    let result = await searchUnidadById(idFirma.id);
+    let result = await searchUnidadById(Number(idFirma.id));
     setUnidadesNegocio(result);
   };
 
