@@ -1,12 +1,6 @@
 /* tbody td {
   padding: 30px;
 } */
-
-.searchbar-input {
-  border: 0 !important;
-  box-shadow: none !important;
-}
-
 .containerTable{
   width: 80%;
   margin: 3rem auto;
