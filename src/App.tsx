@@ -33,6 +33,7 @@ import Graficas from "./pages/Graficas";
 import CreditoStatus from "./pages/CreditoStatus";
 import CreditoStatusEdit from "./pages/CreditoStatusEdit";
 import UnidadesNegocioEdit from "./pages/UnidadesNegocioEdit";
+import UnidadesNegocio from "./pages/UnidadesNegocio";
 import Firmas from "./pages/Firmas";
 import FirmasEdit from "./pages/FirmasEdit";
 import AddCreditoStatus from "./pages/AddCreditoStatus";
@@ -71,6 +72,7 @@ const App: React.FC = () => (
         <Route path="/CreditoStatus/edit/:id" component={CreditoStatusEdit} exact={true} />
         <Route path="/CreditoStatus/add" component={AddCreditoStatus} exact={true} />
         <Route path="/Agregar_Unidad/add" component={Agregar_Unidad} exact={true} />
+        <Route path="/Unidades_Negocio/:id" component={UnidadesNegocio} exact={true} />
         <Route path="/Unidades_Negocio/:idFirma/Unidades_Negocio_Edit/:idUnidadNegocio" component={UnidadesNegocioEdit} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>

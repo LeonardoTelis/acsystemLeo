@@ -6,6 +6,7 @@ import {
     IonTitle,
     IonToolbar,
   } from "@ionic/react";
+import React from "react";
   import { Redirect } from "react-router";
   import MuestraStatus from "../components/CreditoStatus/MuestraStatus";
   import ValidarToken from "../components/Login/ValidarToken";
