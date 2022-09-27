@@ -65,7 +65,7 @@ function Unidades_Negocio() {
   };
 
   const addUnidades = () =>{
-    history.push("/Agregar_Unidad/add");
+    history.push(`/Agregar_Unidad/${idFirma.id}/add`);
   }
 
   return (

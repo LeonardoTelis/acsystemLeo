@@ -74,7 +74,7 @@ const App: React.FC = () => (
         <Route path="/Agregar_Firma/add" component={Agregar_Firma} exact={true} />
         <Route path="/CreditoStatus/edit/:id" component={CreditoStatusEdit} exact={true} />
         <Route path="/CreditoStatus/add" component={AddCreditoStatus} exact={true} />
-        <Route path="/Agregar_Unidad/add" component={Agregar_Unidad} exact={true} />
+        <Route path="/Agregar_Unidad/:id/add" component={Agregar_Unidad} exact={true} />
         <Route path="/Unidades_Negocio/:idFirma/Unidades_Negocio_Edit/:idUnidadNegocio" component={UnidadesNegocioEdit} exact={true} />
       </IonRouterOutlet>
     </IonReactRouter>

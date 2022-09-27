@@ -97,3 +97,34 @@ export const editUnidadNegocio = async (unidadNegocio:any,idFirma:String,idUnida
     }
   }
 };
+
+export const saveUnidad = async (unidadNegocio:Unidades,firmaId:any) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
+
+  const newPost = {
+    activo: unidadNegocio.activo,
+    nombre: unidadNegocio.nombre,
+	  script: unidadNegocio.script,
+    firma_id:firmaId
+  };
+
+  const sendPostRequest = async () => {
+    try {
+        const resp = await axios.post(`http://localhost:8080/acsystem/firmas/${firmaId}/unidadesNegocio/`, newPost,{
+          headers: {
+            'Authorization': authorization,
+          },
+        });
+        console.log(resp.data);
+        return true;
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+        return false;
+    }
+  };
+
+  return sendPostRequest()
+};
