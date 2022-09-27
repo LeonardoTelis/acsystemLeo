@@ -31,7 +31,7 @@ function Unidades_Negocio() {
   const history = useHistory();
 
   const [unidadesNegocio, setUnidadesNegocio] = useState([]);
-  const idFirma = useParams<{ id: string }>();
+  const idFirma = useParams<{ id: any }>();
 
   useEffect(() => {
     search();
