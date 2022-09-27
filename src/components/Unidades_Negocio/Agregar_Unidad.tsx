@@ -1,6 +1,6 @@
 import { IonButton, IonCard, IonContent, IonGrid, IonInput, IonItem, IonLabel, IonRow, IonTitle } from "@ionic/react";
 import React from "react";
-import  "./Firmas.css";
+import  "./Unidades.css";
 const Agregar_firma: React.FC = () =>{
 return(
     <IonContent>

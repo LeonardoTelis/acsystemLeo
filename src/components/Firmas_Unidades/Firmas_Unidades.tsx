@@ -25,6 +25,7 @@ import axios from "axios";
 import "./Firmas.css";
 import UnidadesNegocio from "../Unidades_Negocio/Unidades";
 import {
+  add,
   business,
   businessOutline,
   businessSharp,
@@ -70,6 +71,9 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
   const Unidades = (id: String) => {
     history.push("Unidades_Negocio/" + id);
   };
+  const addFirma = () =>{
+    history.push("/Agregar_Firma/add");
+  }
 
   return (
     <IonContent>
@@ -87,7 +91,8 @@ const Firmas_Unidades: React.FC<ContainerProps> = () => {
       
         <IonItem lines="none">
         <IonTitle>Firmas</IonTitle>
-        <IonButton  id="btn-mostrarfirma" shape="round">Agregar Firma</IonButton>
+        <IonButton  id="btn-mostrarfirma" shape="round"  onClick={() => addFirma()}>
+        <IonIcon icon={add}></IonIcon>Agregar Firma</IonButton>
         </IonItem>
         
           <IonSearchbar 

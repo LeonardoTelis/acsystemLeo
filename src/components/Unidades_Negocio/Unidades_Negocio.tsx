@@ -23,14 +23,13 @@ import { removeUnidadNegocio, searchUnidadById } from "./Unidades_NegocioApi";
 import { useParams } from "react-router";
 import UnidadesNegocio from "./Unidades";
 import Agregar_Unidad from "./Agregar_Unidad";
-import { pencil, search, trash } from "ionicons/icons";
+import { add, pencil, search, trash } from "ionicons/icons";
 import { useHistory } from "react-router";
 import NavButtons from "../NavButtons";
 
 function Unidades_Negocio() {
   const history = useHistory();
-  const modal = useRef<HTMLIonModalElement>(null);
-  const input = useRef<HTMLIonInputElement>(null);
+ 
 
   // const [message, setMessage] = useState("Levi te amo");
 
@@ -65,6 +64,10 @@ function Unidades_Negocio() {
     history.push(`/Unidades_Negocio/${idFirma.id}/Unidades_Negocio_Edit/${id}`);
   };
 
+  const addUnidades = () =>{
+    history.push("/Agregar_Unidad/add");
+  }
+
   return (
     <IonPage>
       <IonContent>
@@ -77,12 +80,14 @@ function Unidades_Negocio() {
       </IonHeader>
 
         <IonCard>
-        <IonItem lines="none">
-        <IonTitle>Firmas</IonTitle>
-        <IonButton  id="btn-mostrarfirma" shape="round">Agregar Unidad</IonButton>
-        </IonItem>
-        
 
+        <IonItem lines="none">
+        <IonTitle>Unidades de Negocio</IonTitle>
+          <IonButton color="primary" fill="solid" onClick={() => addUnidades()}>
+            <IonIcon icon={add}></IonIcon>
+            Agregar Unidad
+          </IonButton>
+        </IonItem>
           <IonGrid className="table">
             <IonRow id="headerTable">
               <IonCol>Id</IonCol>
