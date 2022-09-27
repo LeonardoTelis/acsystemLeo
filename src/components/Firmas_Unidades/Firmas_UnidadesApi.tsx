@@ -78,3 +78,34 @@ export const editFirma = async (firma: Firma) => {
     }
   }
 };
+
+export const saveFirma = async (firma: Firma) => {
+  let token = localStorage.getItem("token");
+  let tokenDeAcceso = JSON.parse(String(token)).tokenDeAcceso;
+  let authorization = `Bearer ${tokenDeAcceso}`;
+
+  const newPost = {
+    activo: firma.activo,
+    diasPromesa: firma.diasPromesa,
+    nombre: firma.nombre,
+  };
+
+  const sendPostRequest = async () => {
+    try {
+        const resp = await axios.post('http://localhost:8080/acsystem/creditos/status/', newPost,{
+          headers: {
+            'Authorization': authorization,
+          },
+        });
+        console.log(resp.data);
+        return true;
+    } catch (err) {
+        // Handle Error Here
+        console.error(err);
+        return false;
+    }
+  };
+
+  return sendPostRequest()
+};
+

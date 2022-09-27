@@ -54,7 +54,7 @@ const MuestraStatus: React.FC<ContainerProps> = () => {
   return (
     <IonContent>
       <IonCard className="containerTable">
-        <IonItem lines="none">
+        <IonItem>
           <IonTitle>Gestion de los status</IonTitle>
           <IonButton color="primary" fill="solid" onClick={() => addCredito()}>
             <IonIcon icon={add}></IonIcon>
@@ -65,7 +65,6 @@ const MuestraStatus: React.FC<ContainerProps> = () => {
           show-clear-button="focus"
           placeholder="Buscar por ID"
           onIonChange={(e) => setSearchTerm(e.detail.value!)}
-          className="searchbar-input"
         ></IonSearchbar>
         <IonGrid className="table">
           <IonRow id="headerTable">
