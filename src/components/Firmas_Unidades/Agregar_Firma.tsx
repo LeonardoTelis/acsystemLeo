@@ -70,9 +70,6 @@ const Agregar_firma: React.FC = () => {
               </IonButton>
             </IonRow>
 
-            <IonButton className="btn-mostrarfirma" shape="round">
-              Agregar Firma
-            </IonButton>
           </IonGrid>
         </IonItem>
       </IonCard>
