@@ -7,7 +7,7 @@ import {
     IonToolbar,
   } from "@ionic/react";
   import { Redirect } from "react-router";
-import Agregar_FirmaComponent from "../components/Firmas_Unidades/Agregar_Firma";
+import Agregar_FirmaComponent from "../components/Firmas_Unidades/Agregar_FirmaComponent";
   import MuestraStatus from "../components/CreditoStatus/MuestraStatus";
   import ValidarToken from "../components/Login/ValidarToken";
   import NavButtons from "../components/NavButtons";

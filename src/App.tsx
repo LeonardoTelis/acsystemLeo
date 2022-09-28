@@ -37,7 +37,7 @@ import UnidadesNegocio from "./pages/UnidadesNegocio";
 import Firmas from "./pages/Firmas";
 import FirmasEdit from "./pages/FirmasEdit";
 import AddCreditoStatus from "./pages/AddCreditoStatus";
-import Agregar_Firma from "./components/Firmas_Unidades/Agregar_Firma";
+import Agregar_Firma from "./pages/Agregar_Firma";
 import Agregar_Unidad from "./components/Unidades_Negocio/Agregar_Unidad";
 
 

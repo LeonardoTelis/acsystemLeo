@@ -16,7 +16,7 @@ import { useHistory, useParams } from "react-router";
 import Firma from "./Firma";
 import "./Firmas.css";
 import { saveFirma } from "./Firmas_UnidadesApi";
-const Agregar_firma: React.FC = () => {
+const Agregar_FirmaComponent: React.FC = () => {
   const id = useParams<{ id: string }>();
   const history = useHistory();
   const [firma, setFirma] = useState<Firma>({});
@@ -49,9 +49,7 @@ const Agregar_firma: React.FC = () => {
                   type="text"
                   name="nombre"
                   id="nombre"
-                  onIonChange={(e) =>
-                    (firma.nombre = String(e.detail.value))
-                  }
+                  onIonChange={(e) => (firma.nombre = String(e.detail.value))}
                 />
               </IonItem>
               <IonItem className="containerInputs containerInputPassword">
@@ -69,7 +67,6 @@ const Agregar_firma: React.FC = () => {
                 Guardar Firma
               </IonButton>
             </IonRow>
-
           </IonGrid>
         </IonItem>
       </IonCard>
@@ -77,4 +74,4 @@ const Agregar_firma: React.FC = () => {
   );
 };
 
-export default Agregar_firma;
+export default Agregar_FirmaComponent;
